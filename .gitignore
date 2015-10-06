@@ -1,0 +1,36 @@
+# eclipse
+.classpath
+.project
+.settings
+
+# IntelliJ
+.idea
+*.iml
+*.ipr
+*.iws
+ldsng.iml
+
+# binary dirs
+bin
+dist
+target
+
+# misc
+*.log
+atlassian-ide-plugin.xml
+.DS_Store
+
+# bower components
+bower_components
+core/src/main/webapp/resources/js/bower-lib/*
+
+# grunt tmp files
+core/src/main/webapp/WEB-INF/views/scripts.html
+core/src/main/webapp/resources/js/scripts.html
+
+# node modules
+node_modules/*
+
+#js coverage & test reports
+core/src/coverage/*
+test-results.xml

@@ -1,0 +1,27 @@
+{
+  "org.brixen.example.priceline.PricelinePage" : {
+    "type":"org.brixen.config.LoadableConfigImpl",
+    "loadTimeout":120,
+    "clickHotelsTabWithJavascript":false,
+    "clickFlightsTabWithJavascript":false,
+    "clickCarsTabWithJavascript":true,
+    "clickVacationPackagesTabWithJavascript":false,
+    "clickCruisesTabWithJavascript":false,
+    "clickMoreTabWithJavascript":false
+  },
+
+  "SignInMenuConfig" : {
+    "type":"org.brixen.config.DropDownMenuConfigImpl",
+    "loadTimeout":10,
+    "pollingTimeout":10,
+    "pollingInterval":1,
+    "clickOptionWithJavascript":true,
+    "controlConfigs" : {
+      "EXPAND": {
+        "type": "org.brixen.config.HoverControlConfigImpl",
+        "hoverWithJavascript":false,
+        "clickInsteadOfHover":true
+      }
+    }
+  }
+}

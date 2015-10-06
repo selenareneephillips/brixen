@@ -1,0 +1,32 @@
+{
+  "SampleControllableConfigOne":{
+    "type":"org.brixen.config.ControllableConfigImpl",
+    "controlConfigs":{
+      "ControlNameOne": {
+        "type":"org.brixen.config.HoverAndClickControlConfigImpl",
+        "clickWithJavascript":true,
+        "hoverWithJavascript":false
+      },
+      "ControlNameTwo": {
+        "type":"org.brixen.config.HoverAndClickControlConfigImpl",
+        "clickWithJavascript":false,
+        "hoverWithJavascript":true
+      }
+    }
+  },
+  "SampleControllableConfigTwo":{
+    "type":"org.brixen.config.ControllableConfigImpl",
+    "controlConfigs":{
+      "ControlNameOne": {
+        "type":"org.brixen.config.HoverAndClickControlConfigImpl",
+        "clickWithJavascript":true,
+        "hoverWithJavascript":true
+      },
+      "ControlNameTwo": {
+        "type":"org.brixen.config.HoverAndClickControlConfigImpl",
+        "clickWithJavascript":false,
+        "hoverWithJavascript":false
+      }
+    }
+  }
+}
