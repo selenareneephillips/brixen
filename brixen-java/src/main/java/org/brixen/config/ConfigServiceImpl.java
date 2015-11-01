@@ -14,7 +14,6 @@ import java.net.URL;
 import java.util.*;
 
 @XSlf4j
-@SuppressWarnings("UnusedDeclaration")
 public class ConfigServiceImpl implements ConfigService {
     private static final InputStream PROFILE_DIR_STREAM =
             ConfigServiceImpl.class.getClassLoader().getResourceAsStream("./pageobject_config/");

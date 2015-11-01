@@ -89,7 +89,7 @@ public interface LoadableConfig {
      * @param name      the name of the custom configuration property in the JSON configuration source
      * @param value     the value of the custom configuration property in the JSON configuration source
      */
-    @JsonAnyGetter
+    @JsonAnySetter
     void setAdditionalProperty(String name, Object value);
 
     /**
