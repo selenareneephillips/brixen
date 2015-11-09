@@ -21,7 +21,7 @@
         <additionalparam>-Xdoclint:none</additionalparam>
 
         <!-- deps -->
-        <findbugs.version>3.0.0</findbugs.version>
+        <findbugs.version>3.0.1</findbugs.version>
         <selenium.version>2.46.0</selenium.version>
         <testng.version>6.8.5</testng.version>
         <lombok.version>1.16.4</lombok.version>
@@ -33,6 +33,27 @@
         <mockito.version>1.10.19</mockito.version>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>${findbugs.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>findbugs</artifactId>
+            <version>${findbugs.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>xml-apis</artifactId>
+                    <groupId>xml-apis</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>annotations</artifactId>
+            <version>${findbugs.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>

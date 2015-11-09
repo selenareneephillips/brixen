@@ -10,6 +10,22 @@
 *.iws
 ldsng.iml
 
+#Xamarin
+#.userprefs
+
+#DotNet
+[Oo]bj/
+[Bb]in/
+.nuget/
+_ReSharper.*
+packages/
+artifacts/
+*.user
+*.suo
+*.userprefs
+*DS_Store
+*.sln.ide
+
 # binary dirs
 bin
 dist

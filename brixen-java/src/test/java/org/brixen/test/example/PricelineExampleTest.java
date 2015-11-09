@@ -1,4 +1,4 @@
-package org.brixen.example;
+package org.brixen.test.example;
 
 import lombok.extern.slf4j.XSlf4j;
 import org.brixen.config.ConfigService;

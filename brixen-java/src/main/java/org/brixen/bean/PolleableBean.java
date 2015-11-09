@@ -1,10 +1,5 @@
 package org.brixen.bean;
 
-/**
- * Defines the contract for a data transfer object used to construct a <b>Selenium</b> page object which models a
- * dynamic page object which needs to be polled on intervals for an expected condition via a mechanism such as
- * {@link org.openqa.selenium.support.ui.FluentWait}.
- */
 public interface PolleableBean extends LoadableBean {
 
     /**

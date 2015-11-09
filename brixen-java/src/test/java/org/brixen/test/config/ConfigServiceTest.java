@@ -1,5 +1,9 @@
-package org.brixen.config;
+package org.brixen.test.config;
 
+import org.brixen.config.ConfigServiceImpl;
+import org.brixen.config.ControlConfig;
+import org.brixen.config.ControllableConfig;
+import org.brixen.config.HoverAndClickControlConfig;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Platform;
 
