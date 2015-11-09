@@ -8,6 +8,8 @@
     <RootNamespace>Org.Brixen.Bean.Tests</RootNamespace>
     <AssemblyName>Org.Brixen.Bean.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,34 +31,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="Moq">
+      <HintPath>..\..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>..\..\..\git\pageobject-api\brixen-dotnet\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+      <HintPath>..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="WebDriver">
-      <HintPath>..\..\..\..\..\selenium-dotnet-2.48.0\net40\WebDriver.dll</HintPath>
-    </Reference>
-    <Reference Include="Moq">
-      <HintPath>..\..\..\git\pageobject-api\brixen-dotnet\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
-    </Reference>
-    <Reference Include="NLog">
-      <HintPath>..\..\..\git\pageobject-api\brixen-dotnet\packages\NLog.4.2.0\lib\net45\NLog.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\selenium-dotnet-2.48.0\net40\WebDriver.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="NLog.config" />
-    <None Include="NLog.xsd" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LoadableBeanTest.cs" />
     <Compile Include="PolleableBeanTest.cs" />
     <Compile Include="ContentContainerBeanTest.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\bean\Org.Brixen.Bean.csproj">
-      <Project>{C8D1B60B-D62D-4CBA-8B2F-63323829408A}</Project>
-      <Name>Org.Brixen.Bean</Name>
-    </ProjectReference>
   </ItemGroup>
 </Project>
