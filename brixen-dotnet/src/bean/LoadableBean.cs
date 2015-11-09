@@ -43,8 +43,8 @@ namespace Org.Brixen.Bean {
 		} 
 
 		public override string ToString() {
-			return String.Format("LoadableBean(Driver: {0}, LoadTimeout: {1})", Driver != null ? Driver.ToString() : null, 
-				LoadTimeout.ToString());
+			return String.Format("LoadableBean(Driver: {0}, LoadTimeout: {1})", Driver != null ? Driver.ToString() : 
+				"null", LoadTimeout.ToString());
 		}
 
 		public override bool Equals(System.Object obj) {
@@ -68,7 +68,7 @@ namespace Org.Brixen.Bean {
 					Driver != null ? 
 					Driver.GetHashCode() : 0;
 				
-				hashCode = (hashCode * 397) ^ driverHashCode ;
+				hashCode = (hashCode * 397) ^ driverHashCode;
 				return hashCode;
 			}
 		}

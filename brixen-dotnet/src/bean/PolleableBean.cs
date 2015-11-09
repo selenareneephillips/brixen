@@ -7,7 +7,7 @@ namespace Org.Brixen.Bean {
 		private int pollingTimeout;
 		private int pollingInterval;
 
-		public PolleableBean() : base() {
+		public PolleableBean() {
 			pollingTimeout = PolleableConstants.DefaultPollingTimeout;
 			pollingInterval = PolleableConstants.DefaultPollingInterval;
 		}
@@ -41,7 +41,6 @@ namespace Org.Brixen.Bean {
 		}
 
 		public override string ToString() {
-			
 			return String.Format("PolleableBean({0}, PollingTimeout: {1}, PollingInterval: {2})", base.ToString(), 
 				PollingTimeout.ToString(),PollingInterval.ToString());
 		}

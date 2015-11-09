@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="LoadableBeanTest.cs" />
     <Compile Include="PolleableBeanTest.cs" />
+    <Compile Include="ContentContainerBeanTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\bean\Org.Brixen.Bean.csproj">

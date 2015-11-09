@@ -16,7 +16,7 @@ namespace Org.Brixen.Bean.Tests
 		[Category("BeanExpectedExceptionsTestGroup")]
 		[Category("LoadableBeanExpectedExceptionsTestGroup")]
 		[ExpectedException("System.ArgumentOutOfRangeException", ExpectedMessage="Cannot specify a load timeout " + 
-			"less than 0 seconds", MatchType=MessageMatch.Regex )]
+			"less than 0 seconds", MatchType=MessageMatch.Regex)]
 		public void ShouldThrowExceptionForNegativeLoadTimeout() {
 			ILoadableBean bean = new LoadableBean();
 			bean.LoadTimeout = -1;

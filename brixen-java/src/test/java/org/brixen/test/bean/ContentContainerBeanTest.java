@@ -1,7 +1,7 @@
 package org.brixen.test.bean;
 
-import org.brixen.bean.PolleableBean;
-import org.brixen.bean.PolleableBeanImpl;
+import org.brixen.bean.ContentContainerBean;
+import org.brixen.bean.ContentContainerBeanImpl;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.openqa.selenium.WebDriver;
@@ -13,9 +13,8 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotEquals;
 import static org.testng.Assert.assertTrue;
 
-@Test(groups = {"PolleableBeanTestGroup"})
-public class PolleableBeanTest {
-
+@Test(groups = {"LoadableBeanTestGroup"})
+public class ContentContainerBeanTest {
     private @Mock WebDriver mockDriver;
 
     @BeforeMethod
@@ -23,47 +22,39 @@ public class PolleableBeanTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Test(groups = {"ExpectedExceptionsTestGroup", "PolleableBeanExpectedExceptionsTestGroup"},
-            expectedExceptions = { IllegalArgumentException.class },
-            expectedExceptionsMessageRegExp = "Cannot specify a polling timeout less than 0 seconds"
+    @SuppressWarnings("ConstantConditions")
+    @Test(groups = {"ExpectedExceptionsTestGroup", "BeanExpectedExceptionsTestGroup",
+            "ContentContainerBeanExpectedExceptionsTestGroup"},
+            expectedExceptions = { NullPointerException.class }
     )
-    public void shouldThrowExceptionForNegativePollingTimeout() {
-        final PolleableBean bean = new PolleableBeanImpl();
-        bean.setPollingTimeout(-1);
-    }
-
-    @Test(groups = {"ExpectedExceptionsTestGroup", "PolleableBeanExpectedExceptionsTestGroup"},
-            expectedExceptions = { IllegalArgumentException.class },
-            expectedExceptionsMessageRegExp = "Cannot specify a polling interval less than 0 seconds"
-    )
-    public void shouldThrowExceptionForNegativePollingInterval() {
-        final PolleableBean bean = new PolleableBeanImpl();
-        bean.setPollingInterval(-1);
+    public void shouldThrowExceptionForNullContainerElement() {
+        final ContentContainerBean bean = new ContentContainerBeanImpl();
+        bean.setContentContainer(null);
     }
 
     @Test(groups = {"ToStringCallsSuperTestGroup", "BeanToStringCallsSuperTestGroup",
-            "PolleableBeanToStringCallsSuperTestGroup"}
+            "ContentContainerBeanToStringCallsSuperTestGroup"}
     )
     public void shouldCallSuperForToString() {
-        final PolleableBean bean = new PolleableBeanImpl();
+        final ContentContainerBean bean = new ContentContainerBeanImpl();
 
         when(mockDriver.toString()).thenReturn("Mock WebDriver");
         bean.setDriver(mockDriver);
         bean.setLoadTimeout(100);
 
-        assertTrue(bean.toString().contains("driver=Mock WebDriver"), "toString() for PolleableBeanImpl does " +
+        assertTrue(bean.toString().contains("driver=Mock WebDriver"), "toString() for ContentContainerBeanImpl does " +
                 "not include the driver field in LoadableBeanImpl: " + bean.toString());
-        assertTrue(bean.toString().contains("loadTimeout=100"), "toString() for PolleableBeanImpl does " +
+        assertTrue(bean.toString().contains("loadTimeout=100"), "toString() for ContentContainerBeanImpl does " +
                 "not include the loadTimeoutInSeconds field in LoadableBeanImpl: " + bean.toString());
     }
 
     @Test(groups = {"HashCodeCallsSuperTestGroup", "BeanHashCodeCallsSuperTestGroup",
-            "PolleableBeanHashCodeCallsSuperTestGroup"},
+            "ContentContainerBeanHashCodeCallsSuperTestGroup"},
             dependsOnMethods = {"shouldCallSuperForToString"}
     )
     public void shouldCallSuperForHashCode() {
-        final PolleableBean bean = new PolleableBeanImpl();
-        final PolleableBean beanToCompare = new PolleableBeanImpl();
+        final ContentContainerBean bean = new ContentContainerBeanImpl();
+        final ContentContainerBean beanToCompare = new ContentContainerBeanImpl();
 
         assertEquals(bean.hashCode(), beanToCompare.hashCode(), "Hash codes for bean which have not had setters " +
                 "called should be equal, but are not: " + bean.toString() + ", " + beanToCompare.toString());
@@ -88,12 +79,12 @@ public class PolleableBeanTest {
     }
 
     @Test(groups = {"EqualsCallsSuperTestGroup", "BeanEqualsCallsSuperTestGroup",
-            "PolleableBeanEqualsCallsSuperTestGroup"},
+            "ContentContainerBeanEqualsCallsSuperTestGroup"},
             dependsOnMethods = {"shouldCallSuperForToString", "shouldCallSuperForHashCode"}
     )
     public void shouldCallSuperForEquals() {
-        final PolleableBean bean = new PolleableBeanImpl();
-        final PolleableBean beanToCompare = new PolleableBeanImpl();
+        final ContentContainerBean bean = new ContentContainerBeanImpl();
+        final ContentContainerBean beanToCompare = new ContentContainerBeanImpl();
 
         assertEquals(bean, beanToCompare, "Equals method should return true, but did not: " + bean.toString() + ", " +
                 beanToCompare.toString());

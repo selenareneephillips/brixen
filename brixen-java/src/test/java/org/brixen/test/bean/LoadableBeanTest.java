@@ -7,11 +7,8 @@ import org.testng.annotations.Test;
 @Test(groups = {"LoadableBeanTestGroup"})
 public class LoadableBeanTest {
 
-    @Test(groups = {
-            "ExpectedExceptionsTestGroup",
-            "BeanExpectedExceptionsTestGroup",
-            "LoadableBeanExpectedExceptionsTestGroup"
-        },
+    @Test(groups = {"ExpectedExceptionsTestGroup", "BeanExpectedExceptionsTestGroup",
+            "LoadableBeanExpectedExceptionsTestGroup"},
             expectedExceptions = { IllegalArgumentException.class },
             expectedExceptionsMessageRegExp = "Cannot specify a load timeout less than 0 seconds"
     )
@@ -21,11 +18,8 @@ public class LoadableBeanTest {
     }
 
     @SuppressWarnings("ConstantConditions")
-    @Test(groups = {
-            "ExpectedExceptionsTestGroup",
-            "BeanExpectedExceptionsTestGroup",
-            "LoadableBeanExpectedExceptionsTestGroup"
-        },
+    @Test(groups = {"ExpectedExceptionsTestGroup", "BeanExpectedExceptionsTestGroup",
+            "LoadableBeanExpectedExceptionsTestGroup"},
             expectedExceptions = { NullPointerException.class }
     )
     public void shouldThrowExceptionForNullDriver() {

@@ -1,9 +1,6 @@
 package org.brixen.bean;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -15,5 +12,5 @@ import org.openqa.selenium.WebElement;
 public class ContentContainerBeanImpl extends LoadableBeanImpl implements ContentContainerBean {
 
     /** The {@code WebElement} that contains the content wrapped by the page object */
-    private @Getter @Setter WebElement contentContainer;
+    private @Getter(onMethod=@__(@Override)) @Setter(onMethod=@__(@Override)) @NonNull WebElement contentContainer;
 }
