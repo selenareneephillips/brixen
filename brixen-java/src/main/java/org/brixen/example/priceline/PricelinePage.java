@@ -195,7 +195,11 @@ public class PricelinePage extends AbstractLoadable<PricelinePage> {
 
     private void selectTab(WebElement tabSelector, final String clickWithJavascriptPropertyName) {
         log.entry(tabSelector, clickWithJavascriptPropertyName);
-        if(getCustomConfigProperty(getClass().getCanonicalName(), clickWithJavascriptPropertyName, Boolean.class)) {
+
+        Boolean clickWithJavaScript = getCustomConfigProperty(getClass().getCanonicalName(),
+                clickWithJavascriptPropertyName, Boolean.class);
+
+        if(clickWithJavaScript != null && clickWithJavaScript) {
             log.debug("Clicking tab with Javascript");
             new ClickWithJavascript().accept(getDriver(),tabSelector);
         } else {
