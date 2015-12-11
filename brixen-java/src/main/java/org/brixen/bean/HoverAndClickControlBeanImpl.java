@@ -1,9 +1,6 @@
 package org.brixen.bean;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.brixen.decorator.bean.ClickableBeanDecorator;
 import org.brixen.decorator.bean.LoadableBeanProvider;
 import org.brixen.decorator.bean.PolleableBeanDecorator;
@@ -22,26 +19,26 @@ public class HoverAndClickControlBeanImpl extends ClickControlBeanImpl implement
      * The {@code LoadableBeanProvider} for the internal {@code PolleableBean} implementation to which this
      * {@code class} delegates all invocations of the methods specified in {@code PolleableBean}.
      */
-    private final @Getter LoadableBeanProvider<PolleableBean> polleableBeanProvider =
+    private final @Getter(onMethod=@__(@Override)) LoadableBeanProvider<PolleableBean> polleableBeanProvider =
             new LoadableBeanProvider<>(new PolleableBeanImpl());
 
     /** The element to send the focus to when unhovering the web control */
-    private @Setter @Getter WebElement unhoverElement;
+    private @Getter(onMethod=@__(@Override)) @Setter(onMethod=@__(@Override)) @NonNull WebElement unhoverElement;
 
     /** Flag for enabling, disabling the Javascript hover workaround for the web control*/
-    private @Setter boolean hoverWithJavascript = false;
+    private @Setter(onMethod=@__(@Override)) boolean hoverWithJavascript = false;
 
     /** Flag for enabling/disabling the unhover with Javascript workaround for the unhover element */
-    private @Setter boolean unhoverWithJavascript = false;
+    private @Setter(onMethod=@__(@Override)) boolean unhoverWithJavascript = false;
 
     /** Flag for enabling, disabling the Javascript click action workaround for the web control */
-    private @Setter boolean clickWithJavascriptInsteadOfHover = false;
+    private @Setter(onMethod=@__(@Override)) boolean clickWithJavascriptInsteadOfHover = false;
 
     /** Flag for enabling, disabling the click action workaround for the unhover element */
-    private @Setter boolean unhoverWithClickInstead = false;
+    private @Setter(onMethod=@__(@Override)) boolean unhoverWithClickInstead = false;
 
     /** Flag for enabling, disabling the Javascript click action workaround for the unhover element */
-    private @Setter boolean unhoverWithJavascriptClickInstead = false;
+    private @Setter(onMethod=@__(@Override)) boolean unhoverWithJavascriptClickInstead = false;
 
     /**
      * {@inheritDoc}

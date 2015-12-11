@@ -113,8 +113,8 @@ namespace Org.Brixen.Bean.Tests
 			IPolleableBean bean = new PolleableBean();
 			bean.Driver = mockDriver.Object;
 
-			Assert.AreEqual(bean.ToString(), "PolleableBean(LoadableBean(Driver: " + mockDriver.Object.ToString() + 
-				", LoadTimeout: 30), " + "PollingTimeout: 30, PollingInterval: 1)");
+			Assert.AreEqual("PolleableBean(LoadableBean(Driver: " + mockDriver.Object.ToString() + 
+				", LoadTimeout: 30), " + "PollingTimeout: 30, PollingInterval: 1)", bean.ToString());
 		}
 
 		[Test]

@@ -24,8 +24,14 @@ public class LoadableBeanProvider<BeanT extends LoadableBean> {
      * Constructs a {@code LoadableBeanProvider} which provides {@code protected} access to the specified state bean.
      *
      * @param bean  the state bean to which this {@code LoadableBeanProvider} provides {@code protected} access
+     * @throws NullPointerException if the specified state bean is {@code null}
+     *
      */
     public LoadableBeanProvider(BeanT bean) {
+        if(bean == null) {
+            throw new NullPointerException("Cannot construct a LoadableBeanProvider with a null bean");
+        }
+
         this.bean = bean;
     }
 }

@@ -7,7 +7,7 @@ using Moq;
 namespace Org.Brixen.Bean.Tests {
 
 	[TestFixture]
-	[Category("ContentcContainerBeanTestGroup")]
+	[Category("ContentContainerBeanTestGroup")]
 	public class ContentContainerBeanTest {
 
 		[Test]
@@ -101,15 +101,12 @@ namespace Org.Brixen.Bean.Tests {
 		[Category("ContentContainerBeanToStringCallsBaseTestGroup")]
 		public void ShouldCallBaseForToString() {
 			Mock<IWebDriver> mockDriver = new Mock<IWebDriver>();
-			Mock<IWebElement> mockContainerElement = new Mock<IWebElement>();
 
 			IContentContainerBean bean = new ContentContainerBean();
 			bean.Driver = mockDriver.Object;
-			bean.ContentContainer = mockContainerElement.Object;
 
-			Assert.AreEqual(bean.ToString(), "ContentContainerBean(LoadableBean(Driver: " + 
-				mockDriver.Object.ToString() + ", LoadTimeout: 30), " + "ContentContainer: " + 
-				mockContainerElement.Object.ToString() + ")");
+			Assert.AreEqual("ContentContainerBean(LoadableBean(Driver: " + mockDriver.Object.ToString() + 
+				", LoadTimeout: 30), ContentContainer: null)", bean.ToString());
 		}
 
 		[Test]

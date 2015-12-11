@@ -4,13 +4,8 @@ using Org.Brixen.PageObject;
 namespace Org.Brixen.Bean {
 	
 	public class PolleableBean : LoadableBean, IPolleableBean {
-		private int pollingTimeout;
-		private int pollingInterval;
-
-		public PolleableBean() {
-			pollingTimeout = PolleableConstants.DefaultPollingTimeout;
-			pollingInterval = PolleableConstants.DefaultPollingInterval;
-		}
+		private int pollingTimeout = PolleableConstants.DefaultPollingTimeout;
+		private int pollingInterval = PolleableConstants.DefaultPollingInterval;
 
 		public int PollingTimeout {
 			get {

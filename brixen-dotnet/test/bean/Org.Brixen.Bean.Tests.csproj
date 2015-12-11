@@ -8,8 +8,6 @@
     <RootNamespace>Org.Brixen.Bean.Tests</RootNamespace>
     <AssemblyName>Org.Brixen.Bean.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -34,11 +32,11 @@
     <Reference Include="Moq">
       <HintPath>..\..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
     </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="WebDriver">
       <HintPath>..\..\..\..\..\..\selenium-dotnet-2.48.0\net40\WebDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>bin\Debug\nunit.framework.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
@@ -49,5 +47,13 @@
     <Compile Include="LoadableBeanTest.cs" />
     <Compile Include="PolleableBeanTest.cs" />
     <Compile Include="ContentContainerBeanTest.cs" />
+    <Compile Include="ClickableBeanTest.cs" />
+    <Compile Include="HoverControlBeanTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\bean\Org.Brixen.Bean.csproj">
+      <Project>{C8D1B60B-D62D-4CBA-8B2F-63323829408A}</Project>
+      <Name>Org.Brixen.Bean</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

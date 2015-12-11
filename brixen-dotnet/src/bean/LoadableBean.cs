@@ -6,11 +6,7 @@ namespace Org.Brixen.Bean {
 	
 	public class LoadableBean : ILoadableBean {
 		private IWebDriver driver;
-		private int loadTimeout;
-
-		public LoadableBean() {
-			loadTimeout = LoadableConstants.DefaultLoadTimeout;
-		}
+		private int loadTimeout = LoadableConstants.DefaultLoadTimeout;
 
 		public IWebDriver Driver {
 			get {

@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
  * Defines the contract for a data transfer object used to construct a <b>Selenium</b> page object that models a
  * {@code Clickable} page object.
  */
-public interface ClickableBean extends ControlBean {
+public interface ClickableBean extends ContentContainerBean {
     /**
      * Enables or disables the Javascript click workaround.
      * <p>

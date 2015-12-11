@@ -1,8 +1,6 @@
 package org.brixen.bean;
 
-import lombok.EqualsAndHashCode;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 /**
  * Specifies all the data necessary to construct a <b>Selenium</b> page object that models a {@code Clickable}
@@ -13,7 +11,7 @@ import lombok.ToString;
 public class ClickableBeanImpl extends ContentContainerBeanImpl implements ClickableBean {
 
     /** Flag for enabling, disabling the Javascript click workaround */
-    private @Setter boolean clickWithJavascript = false;
+    private @Setter(onMethod=@__(@Override)) @NonNull boolean clickWithJavascript = false;
 
     /**
      * {@inheritDoc}

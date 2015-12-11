@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C8D1B60B-D62D-4CBA-8B2F-63323829408A}</ProjectGuid>
+    <ProjectGuid>{F1F19AB1-C28B-4FBD-9AC6-45DE32444141}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Org.Brixen.Bean</RootNamespace>
-    <AssemblyName>Org.Brixen.Bean</AssemblyName>
+    <RootNamespace>Org.Brixen.Decorator.Bean</RootNamespace>
+    <AssemblyName>Org.Brixen.Decorator.Bean</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -29,32 +29,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="WebDriver">
-      <HintPath>..\..\..\..\..\..\selenium-dotnet-2.48.0\net40\WebDriver.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ILoadableBean.cs" />
-    <Compile Include="IPolleableBean.cs" />
-    <Compile Include="LoadableBean.cs" />
-    <Compile Include="PolleableBean.cs" />
-    <Compile Include="IContentContainerBean.cs" />
-    <Compile Include="ContentContainerBean.cs" />
-    <Compile Include="IControlBean.cs" />
-    <Compile Include="ControlBeanExtensions.cs" />
-    <Compile Include="IClickControlBean.cs" />
-    <Compile Include="IClickableBean.cs" />
-    <Compile Include="IHoverControlBean.cs" />
-    <Compile Include="IHoverAndClickControlBean.cs" />
-    <Compile Include="ClickableBean.cs" />
-    <Compile Include="HoverControlBean.cs" />
+    <Compile Include="LoadableBeanProvider.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\pageobject\Org.Brixen.PageObject.csproj">
-      <Project>{B2F7A0E7-AF7B-48A9-AE7F-28B947661E8F}</Project>
-      <Name>Org.Brixen.PageObject</Name>
+    <ProjectReference Include="..\..\bean\Org.Brixen.Bean.csproj">
+      <Project>{C8D1B60B-D62D-4CBA-8B2F-63323829408A}</Project>
+      <Name>Org.Brixen.Bean</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

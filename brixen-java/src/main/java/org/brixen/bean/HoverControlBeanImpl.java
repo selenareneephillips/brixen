@@ -1,9 +1,6 @@
 package org.brixen.bean;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.openqa.selenium.WebElement;
 
 /**
@@ -15,25 +12,25 @@ import org.openqa.selenium.WebElement;
 public class HoverControlBeanImpl extends ContentContainerBeanImpl implements HoverControlBean {
 
     /** The element to send the focus to when unhovering the web control */
-    private @Setter @Getter WebElement unhoverElement;
+    private @Getter(onMethod=@__(@Override)) @Setter(onMethod=@__(@Override)) @NonNull WebElement unhoverElement;
 
     /** Flag for enabling, disabling the Javascript hover workaround for the web control*/
-    private @Setter boolean hoverWithJavascript = false;
+    private @Setter(onMethod=@__(@Override)) boolean hoverWithJavascript = false;
 
     /** Flag for enabling/disabling the unhover with Javascript workaround for the unhover element */
-    private @Setter boolean unhoverWithJavascript = false;
+    private @Setter(onMethod=@__(@Override)) boolean unhoverWithJavascript = false;
 
     /** Flag for enabling, disabling the click action workaround for the web control */
-    private @Setter boolean clickInsteadOfHover = false;
+    private @Setter(onMethod=@__(@Override)) boolean clickInsteadOfHover = false;
 
     /** Flag for enabling, disabling the Javascript click action workaround for the web control */
-    private @Setter boolean clickWithJavascriptInsteadOfHover = false;
+    private @Setter(onMethod=@__(@Override)) boolean clickWithJavascriptInsteadOfHover = false;
 
     /** Flag for enabling, disabling the click action workaround for the unhover element */
-    private @Setter boolean unhoverWithClickInstead = false;
+    private @Setter(onMethod=@__(@Override)) boolean unhoverWithClickInstead = false;
 
     /** Flag for enabling, disabling the Javascript click action workaround for the unhover element */
-    private @Setter boolean unhoverWithJavascriptClickInstead = false;
+    private @Setter(onMethod=@__(@Override)) boolean unhoverWithJavascriptClickInstead = false;
 
     /**
      * {@inheritDoc}
