@@ -46,42 +46,35 @@ public interface ControllableBean extends ContentContainerBean {
     /**
      * Adds a {@code ClickControlBean} of the specified implementation to specify a {@code ClickControl} to add to the
      * page object.
-     * <p>
-     * The specified implementation of {@code ClickControlBean} must define a no-arg constructor.
      *
-     * @param name          the name of the {@code ClickControl} to add to the page object
-     * @param beanClass     the {@code class} type of the {@code ClickControlBean} to specify the {@code ClickControl}
+     * @param name     the name of the {@code ClickControl} to add to the page object
+     * @param bean     the {@code ClickControlBean} to specify the {@code ClickControl}
      */
-    void addClickControl(String name, Class<? extends ClickControlBean> beanClass);
+    <BeanT extends ClickControlBean> void addClickControl(String name, BeanT bean);
 
     /**
      * Adds a {@code HoverControlBean} of the specified implementation to specify a {@code HoverControl} to add to the
      * page object.
-     * <p>
-     * The specified implementation of {@code HoverControlBean} must define a no-arg constructor.
      *
-     * @param name          the name of the {@code HoverControl} to add to the page object
-     * @param beanClass     the {@code class} type of the {@code HoverControlBean} to specify the {@code HoverControl}
+     * @param name     the name of the {@code HoverControl} to add to the page object
+     * @param bean     the {@code HoverControlBean} to specify the {@code HoverControl}
      */
-    void addHoverControl(String name, Class<? extends HoverControlBean> beanClass);
+    <BeanT extends HoverControlBean> void addHoverControl(String name, BeanT bean);
 
     /**
      * Adds a {@code HoverAndClickControlBean} of the specified implementation to specify a {@code HoverControl} to
      * add to the page object.
-     * <p>
-     * The specified implementation of {@code HoverAndClickControlBean} must define a no-arg constructor.
      *
-     * @param name          the name of the {@code HoverAndClickControl} to add to the page object
-     * @param beanClass     the {@code class} type of the {@code HoverAndClickControlBean} to specify the
-     *                      {@code HoverAndClickControl}
+     * @param name     the name of the {@code HoverAndClickControl} to add to the page object
+     * @param bean     the {@code HoverAndClickControlBean} to specify the {@code HoverAndClickControl}
      */
-    void addHoverAndClickControl(String name, Class<? extends HoverAndClickControlBean> beanClass);
+    <BeanT extends HoverAndClickControlBean> void addHoverAndClickControl(String name, BeanT bean);
 
     /**
      * Sets the driver to use for browsing the specified web control.
      *
      * @param name      the name of the web control
-     * @param driver    the {@code WebDriver} to use for browsing the page object
+     * @param driver    the driver to use for browsing the page object
      */
     void setControlDriver(String name, WebDriver driver);
 
@@ -102,8 +95,8 @@ public interface ControllableBean extends ContentContainerBean {
     void setControlContentContainer(String name, WebElement contentContainer);
 
     /**
-     * Sets the polling timeout in seconds for the specified web control for polling the web control to determine if an
-     * expected condition has been satisfied.
+     * Sets the timeout in seconds for polling the specified web control to determine if an expected condition has been
+     * satisfied.
      *
      * @param name        the name of the web control
      * @param timeout     the timeout in seconds for polling the web control to determine if an expected condition has
@@ -112,8 +105,8 @@ public interface ControllableBean extends ContentContainerBean {
     void setControlPollingTimeout(String name, int timeout);
 
     /**
-     * Sets the polling internal in seconds for the specified web control for polling the web control to determine if
-     * an expected condition has been satisfied.
+     * Sets the interval in seconds for polling the specified web control to determine if an expected condition has
+     * been satisfied.
      *
      * @param name        the name of the web control
      * @param interval    the interval in seconds for polling the web control to determine if an expected condition has
@@ -143,8 +136,8 @@ public interface ControllableBean extends ContentContainerBean {
      * but the element is not really moused over.
      *
      * @param name                   the name of the web control
-     * @param hoverWithJavascript    if {@code true}, enables the Javascript hover workaround workaround; {@code false}
-     *                               to disable it
+     * @param hoverWithJavascript    if {@code true}, enables the Javascript hover workaround workaround; if
+     *                               {@code false}, disables it
      */
     void setHoverControlWithJavascript(String name, boolean hoverWithJavascript);
 
@@ -158,8 +151,8 @@ public interface ControllableBean extends ContentContainerBean {
      * element is not really moused over.
      *
      * @param name                     the name of the web control
-     * @param unhoverWithJavascript    if {@code true}, enables the Javascript hover workaround; {@code false} to
-     *                                 disable it
+     * @param unhoverWithJavascript    if {@code true}, enables the Javascript hover workaround for the unhover
+     *                                 element; if {@code false}, disables it
      */
     void setUnhoverControlWithJavascript(String name, boolean unhoverWithJavascript);
 
@@ -172,8 +165,8 @@ public interface ControllableBean extends ContentContainerBean {
      * clicked.
      *
      * @param name                   the name of the web control
-     * @param clickWithJavascript    if {@code true}, enables the Javascript click workaround; {@code false} to disable
-     *                               it
+     * @param clickWithJavascript    if {@code true}, enables the Javascript click workaround; if {@code false},
+     *                               disables it
      */
     void setClickControlWithJavascript(String name, boolean clickWithJavascript);
 
@@ -191,8 +184,8 @@ public interface ControllableBean extends ContentContainerBean {
      * side effect(s).
      *
      * @param name                   the name of the web control
-     * @param clickInsteadOfHover    if {@code true}, enables the {@link WebElement#click} action workaround;
-     *                               {@code false} to disable it
+     * @param clickInsteadOfHover    if {@code true}, enables the {@link WebElement#click} action workaround; if
+     *                               {@code false}, disables it
      */
     void setClickControlInsteadOfHover(String name, boolean clickInsteadOfHover);
 
@@ -217,15 +210,15 @@ public interface ControllableBean extends ContentContainerBean {
      * <p>
      * For a {@link HoverAndClickControl}, this will help in situations where a hover cannot be executed to make the
      * control visible because usually, a Javascript click will successfully click an element that is not visible, and
-     * this this will allow automation of test cases which are dependent on the side effects generated by the click
-     * action, but are not related to testing that the hover action makes the web control visible. In such cases, it
-     * would be prudent to manually test the hover action alone in the environment(s) where neither the
+     * this will allow automation of test cases which are dependent on the side effects generated by the click action,
+     * but are not related to testing that the hover action makes the web control visible. In such cases, it would be
+     * prudent to manually test the hover action alone in the environment(s) where neither the
      * {@link Actions#moveToElement} nor the Javascript hover workaround trigger the mouseover event that makes the
      * control visible.
      *
      * @param name                                  the name of the web control
-     * @param clickWithJavascriptInsteadOfHover     if {@code true}, enables the Javascript click action workaround;
-     *                                              {@code false} to disable it
+     * @param clickWithJavascriptInsteadOfHover     if {@code true}, enables the Javascript click action workaround; if
+     *                                              {@code false}, disables it
      */
     void setClickControlWithJavascriptInsteadOfHover(String name, boolean clickWithJavascriptInsteadOfHover);
 
@@ -241,7 +234,7 @@ public interface ControllableBean extends ContentContainerBean {
      *
      * @param name                     the name of the web control
      * @param unhoverWithClickInstead  if {@code true}, enables the {@link WebElement#click} action workaround for the
-     *                                 unhover element; {@code false} to disable it
+     *                                 unhover element; if {@code false}, disables it
      */
     void setUnhoverControlWithClickInstead(String name, boolean unhoverWithClickInstead);
 
@@ -257,9 +250,16 @@ public interface ControllableBean extends ContentContainerBean {
      *
      * @param name                               the name of the web control
      * @param unhoverWithJavascriptClickInstead  if {@code true}, enables the Javascript click action workaround for
-     *                                           the unhover element; {@code false} to disable it
+     *                                           the unhover element; if {@code false}, disables it
      */
     void setUnhoverControlWithJavascriptClickInstead(String name, boolean unhoverWithJavascriptClickInstead);
 
+    /**
+     * Returns the collection of {@code ControlBeans} that specify the web controls for the page object as a
+     * {@code Map} where the names of the web controls are the keys.
+     *
+     * @return the collection of {@code ControlBeans} that specify the web controls for the page object as a
+     * {@code Map} where the names of the web controls are the keys
+     */
     Map<String,ControlBean> getControlBeans();
 }

@@ -24,7 +24,7 @@ public interface ControllableBeanDecorator extends ControllableBean {
      * @return  the {@code LoadableBeanProvider} for the internal {@code ControllableBean} implementation to which this
      *          {@code interface} delegates all invocations of the methods required by {@code ControllableBean}
      */
-    LoadableBeanProvider<? extends ControllableBean> getControllableBeanProvider();
+    LoadableBeanProvider<ControllableBean> getControllableBeanProvider();
 
     /**
      * {@inheritDoc}
@@ -54,24 +54,24 @@ public interface ControllableBeanDecorator extends ControllableBean {
      * {@inheritDoc}
      */
     @Override
-    default void addClickControl(String name, Class<? extends ClickControlBean> beanClass) {
-        getControllableBeanProvider().getBean().addClickControl(name, beanClass);
+    default <BeanT extends ClickControlBean> void addClickControl(String name, BeanT bean) {
+        getControllableBeanProvider().getBean().addClickControl(name, bean);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    default void addHoverControl(String name, Class<? extends HoverControlBean> beanClass) {
-        getControllableBeanProvider().getBean().addHoverControl(name, beanClass);
+    default <BeanT extends HoverControlBean> void addHoverControl(String name, BeanT bean) {
+        getControllableBeanProvider().getBean().addHoverControl(name, bean);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    default void addHoverAndClickControl(String name, Class<? extends HoverAndClickControlBean> beanClass) {
-        getControllableBeanProvider().getBean().addHoverAndClickControl(name, beanClass);
+    default <BeanT extends HoverAndClickControlBean> void addHoverAndClickControl(String name, BeanT bean) {
+        getControllableBeanProvider().getBean().addHoverAndClickControl(name, bean);
     }
 
     /**

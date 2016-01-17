@@ -15,7 +15,7 @@ namespace Org.Brixen.Decorator.Bean.Tests {
 		[Category("LoadableBeanProviderExpectedExceptionsTestGroup")]
 		[ExpectedException("System.ArgumentNullException", ExpectedMessage = "Cannot construct a " + 
 			"LoadableBeanProvider with a null bean", MatchType=MessageMatch.Regex)]
-		public void shouldThrowExceptionForNullBeanElement() {
+		public void ShouldThrowExceptionForNullBeanElement() {
 			new LoadableBeanProvider<ILoadableBean>(null);
 		}
 	}	

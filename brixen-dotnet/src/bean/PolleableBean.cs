@@ -14,7 +14,8 @@ namespace Org.Brixen.Bean {
 
 			set {
 				if(value < 0) {
-					throw new ArgumentOutOfRangeException("Cannot specify a polling timeout less than 0 seconds");
+					throw new ArgumentOutOfRangeException("value", "Cannot specify a polling timeout less than 0 " + 
+						"seconds");
 				}
 
 				pollingTimeout = value;
@@ -28,7 +29,8 @@ namespace Org.Brixen.Bean {
 
 			set {
 				if(value < 0) {
-					throw new ArgumentOutOfRangeException("Cannot specify a polling interval less than 0 seconds");
+					throw new ArgumentOutOfRangeException("value", "Cannot specify a polling interval less than 0 " + 
+						"seconds");
 				}
 
 				pollingInterval = value;
@@ -54,10 +56,9 @@ namespace Org.Brixen.Bean {
 
 		public override int GetHashCode() {
 			unchecked { // Overflow is fine, just wrap
-				int hashCode = base.GetHashCode();
-				hashCode = (hashCode * 397) ^ PollingTimeout;
-				hashCode = (hashCode * 397) ^ PollingInterval;
-				return hashCode;
+				return (base.GetHashCode() * 397) 
+					^ PollingTimeout 
+					^ PollingInterval;
 			}
 		}
 	}

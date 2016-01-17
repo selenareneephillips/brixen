@@ -1,11 +1,11 @@
 ﻿using System;
 
-/// <summary>
-/// Defines the contract for a data transfer object used to construct a <b>Selenium</b> page object that models a
-/// <c>Clickable</c> page object.
-/// </summary>
 namespace Org.Brixen.Bean {
-	
+
+	/// <summary>
+	/// Defines the contract for a data transfer object used to construct a <b>Selenium</b> page object that models a
+	/// <c>Clickable</c> page object.
+	/// </summary>
 	public interface IClickableBean : IContentContainerBean {
 		
 		/// <summary>
@@ -17,8 +17,8 @@ namespace Org.Brixen.Bean {
 		/// <see cref="OpenQA.Selenium.IWebElement.Click()"/> runs without throwing any <c>Exceptions</c>, but the  
 		/// element is not really clicked.
 		/// </summary>
-		/// <param name="clickWithJavascript">if <c>true</c>, the Javascript click workaround is enabled; <c>false</c> 
-		/// otherwise</param>
+		/// <param name="clickWithJavascript">If <c>true</c>, the Javascript click workaround is enabled; <c>false</c> 
+		/// otherwise.</param>
 		bool ClickWithJavascript {
 			get;
 			set;

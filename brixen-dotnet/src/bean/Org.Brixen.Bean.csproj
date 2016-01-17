@@ -32,6 +32,59 @@
     <Reference Include="WebDriver">
       <HintPath>..\..\..\..\..\..\selenium-dotnet-2.48.0\net40\WebDriver.dll</HintPath>
     </Reference>
+    <Reference Include="NuGet.Logging">
+      <HintPath>..\..\packages\NuGet.Logging.3.3.0\lib\net45\NuGet.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NuGet.Versioning">
+      <HintPath>..\..\packages\NuGet.Versioning.3.3.0\lib\net45\NuGet.Versioning.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Frameworks">
+      <HintPath>..\..\packages\NuGet.Frameworks.3.3.0\lib\net45\NuGet.Frameworks.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Packaging.Core.Types">
+      <HintPath>..\..\packages\NuGet.Packaging.Core.Types.3.3.0\lib\net45\NuGet.Packaging.Core.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Packaging.Core">
+      <HintPath>..\..\packages\NuGet.Packaging.Core.3.3.0\lib\net45\NuGet.Packaging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="NuGet.Packaging">
+      <HintPath>..\..\packages\NuGet.Packaging.3.3.0\lib\net45\NuGet.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Configuration">
+      <HintPath>..\..\packages\NuGet.Configuration.3.3.0\lib\net45\NuGet.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="NuGet.Protocol.Core.Types">
+      <HintPath>..\..\packages\NuGet.Protocol.Core.Types.3.3.0\lib\net45\NuGet.Protocol.Core.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="NuGet.Protocol.Core.v3">
+      <HintPath>..\..\packages\NuGet.Protocol.Core.v3.3.3.0\lib\net45\NuGet.Protocol.Core.v3.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="NuGet.Repositories">
+      <HintPath>..\..\packages\NuGet.Repositories.3.3.0\lib\net45\NuGet.Repositories.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.RuntimeModel">
+      <HintPath>..\..\packages\NuGet.RuntimeModel.3.3.0\lib\net45\NuGet.RuntimeModel.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.ContentModel">
+      <HintPath>..\..\packages\NuGet.ContentModel.3.3.0\lib\net45\NuGet.ContentModel.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Client">
+      <HintPath>..\..\packages\NuGet.Client.3.3.0\lib\net45\NuGet.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -42,13 +95,18 @@
     <Compile Include="IContentContainerBean.cs" />
     <Compile Include="ContentContainerBean.cs" />
     <Compile Include="IControlBean.cs" />
-    <Compile Include="ControlBeanExtensions.cs" />
     <Compile Include="IClickControlBean.cs" />
     <Compile Include="IClickableBean.cs" />
     <Compile Include="IHoverControlBean.cs" />
     <Compile Include="IHoverAndClickControlBean.cs" />
     <Compile Include="ClickableBean.cs" />
     <Compile Include="HoverControlBean.cs" />
+    <Compile Include="ClickControlBean.cs" />
+    <Compile Include="ControlBeanExtensions.cs" />
+    <Compile Include="HoverAndClickControlBean.cs" />
+    <Compile Include="IMenuBean.cs" />
+    <Compile Include="MenuBean.cs" />
+    <Compile Include="IControllableBean.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
@@ -56,5 +114,8 @@
       <Project>{B2F7A0E7-AF7B-48A9-AE7F-28B947661E8F}</Project>
       <Name>Org.Brixen.PageObject</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

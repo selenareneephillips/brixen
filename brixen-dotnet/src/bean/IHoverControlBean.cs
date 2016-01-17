@@ -29,9 +29,9 @@ namespace Org.Brixen.Bean {
 		/// Gets or sets the Javascript hover workaround flag for the web control.
 		/// <para>
 		/// When the Javascript hover workaround flag is enabled, a hover over the web control will be performed with 
-		/// Javascript rather than the <see cref="OpenQA.Selenium.IWebElement.Click()"/> method. This is useful in 
-		/// circumstances where the mouse over function fails silently, that is the 
-		/// <see cref="OpenQA.Selenium.IWebElement.Click()"/> runs without throwing any 
+		/// Javascript rather than the <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)"/> 
+		/// method. This is useful in  circumstances where the mouse over function fails silently, that is the 
+		/// <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)"/> runs without throwing any 
 		/// <c>Exceptions</c>, but the element is not really moused over.
 		/// </para>
 		/// </summary>
@@ -130,7 +130,7 @@ namespace Org.Brixen.Bean {
 		/// run without throwing any <c>Exceptions</c>, but the element is not really moused over or clicked.
 		/// </summary>
 		/// <value>If <c>true</c>, the Javascript click action workaround for the unhover element is enabled; 
-		/// <c>false</c> otherwise</value>
+		/// <c>false</c> otherwise.</value>
 		bool UnhoverWithJavascriptClickInstead {
 			get;
 			set;

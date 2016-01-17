@@ -72,8 +72,8 @@ public interface ControllableBuilderDecorator<
      * {@inheritDoc}
      */
     @Override
-    default BuilderT addClickControl(String name, Class<? extends ClickControlBean> beanClass) {
-        getControllableBuilderProvider().getBuilder().getState().addClickControl(name, beanClass);
+    default <ControlBeanT extends ClickControlBean> BuilderT addClickControl(String name, ControlBeanT bean) {
+        getControllableBuilderProvider().getBuilder().getState().addClickControl(name, bean);
         return getControllableBuilderProvider().getBuilder();
     }
 
@@ -81,8 +81,8 @@ public interface ControllableBuilderDecorator<
      * {@inheritDoc}
      */
     @Override
-    default BuilderT addHoverControl(String name, Class<? extends HoverControlBean> beanClass) {
-        getControllableBuilderProvider().getBuilder().getState().addHoverControl(name);
+    default <ControlBeanT extends HoverControlBean> BuilderT addHoverControl(String name, ControlBeanT bean) {
+        getControllableBuilderProvider().getBuilder().getState().addHoverControl(name, bean);
         return getControllableBuilderProvider().getBuilder();
     }
 
@@ -90,8 +90,9 @@ public interface ControllableBuilderDecorator<
      * {@inheritDoc}
      */
     @Override
-    default BuilderT addHoverAndClickControl(String name, Class<? extends HoverAndClickControlBean> beanClass) {
-        getControllableBuilderProvider().getBuilder().getState().addHoverAndClickControl(name, beanClass);
+    default <ControlBeanT extends HoverAndClickControlBean> BuilderT addHoverAndClickControl(String name, ControlBeanT
+            bean) {
+        getControllableBuilderProvider().getBuilder().getState().addHoverAndClickControl(name, bean);
         return getControllableBuilderProvider().getBuilder();
     }
 

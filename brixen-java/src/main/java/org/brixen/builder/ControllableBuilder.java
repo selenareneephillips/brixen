@@ -65,26 +65,22 @@ public interface ControllableBuilder<
     /**
      * Adds a {@code ClickControlBean} of the specified implementation to specify a {@code ClickControl} to add to the
      * page object.
-     * <p>
-     * The specified implementation of {@code ClickControlBean} must define a no-arg constructor.
      *
-     * @param name          the name of the {@code ClickControl} to add to the page object
-     * @param beanClass     the {@code class} type of the {@code ClickControlBean} to specify the {@code ClickControl}
-     * @return              this {@code ControllableBuilder}, cast to its runtime type
+     * @param name     the name of the {@code ClickControl} to add to the page object
+     * @param bean     the {@code ClickControlBean} to specify the {@code ClickControl}
+     * @return        this {@code ControllableBuilder}, cast to its runtime type
      */
-    BuilderT addClickControl(String name, Class<? extends ClickControlBean> beanClass);
+    <ControlBeanT extends ClickControlBean> BuilderT addClickControl(String name, ControlBeanT bean);
 
     /**
      * Adds a {@code HoverControlBean} of the specified implementation to specify a {@code HoverControl} to add to the
      * page object.
-     * <p>
-     * The specified implementation of {@code HoverControlBean} must define a no-arg constructor.
      *
-     * @param name          the name of the {@code HoverControl} to add to the page object
-     * @param beanClass     the {@code class} type of the {@code HoverControlBean} to specify the {@code HoverControl}
-     * @return              this {@code ControllableBuilder}, cast to its runtime type
+     * @param name     the name of the {@code HoverControl} to add to the page object
+     * @param bean     the {@code HoverControlBean} to specify the {@code HoverControl}
+     * @return         this {@code ControllableBuilder}, cast to its runtime type
      */
-    BuilderT addHoverControl(String name, Class<? extends HoverControlBean> beanClass);
+    <ControlBeanT extends HoverControlBean> BuilderT addHoverControl(String name, ControlBeanT bean);
 
     /**
      * Adds a {@code HoverAndClickControlBean} of the specified implementation to specify a {@code HoverControl} to
@@ -92,12 +88,11 @@ public interface ControllableBuilder<
      * <p>
      * The specified implementation of {@code HoverAndClickControlBean} must define a no-arg constructor.
      *
-     * @param name          the name of the {@code HoverAndClickControl} to add to the page object
-     * @param beanClass     the {@code class} type of the {@code HoverAndClickControlBean} to specify the
-     *                      {@code HoverAndClickControl}
-     * @return              this {@code ControllableBuilder}, cast to its runtime type
+     * @param name     the name of the {@code HoverAndClickControl} to add to the page object
+     * @param bean     the {@code HoverAndClickControlBean} to specify the {@code HoverAndClickControl}
+     * @return         this {@code ControllableBuilder}, cast to its runtime type
      */
-    BuilderT addHoverAndClickControl(String name, Class<? extends HoverAndClickControlBean> beanClass);
+    <ControlBeanT extends HoverAndClickControlBean> BuilderT addHoverAndClickControl(String name, ControlBeanT bean);
 
     /**
      * Sets the driver to use for browsing the specified web control.

@@ -1,6 +1,5 @@
 package org.brixen.test.decorator.bean;
 
-import org.brixen.bean.LoadableBean;
 import org.brixen.decorator.bean.LoadableBeanProvider;
 import org.testng.annotations.Test;
 
@@ -14,6 +13,6 @@ public class LoadableBeanProviderTest {
             expectedExceptionsMessageRegExp = "Cannot construct a LoadableBeanProvider with a null bean"
     )
     public void shouldThrowExceptionForNullBean() {
-        new LoadableBeanProvider<>((LoadableBean)null);
+        new LoadableBeanProvider<>(null);
     }
 }

@@ -1,10 +1,14 @@
 ﻿using System;
 using OpenQA.Selenium;
+using Org.Brixen.PageObject;
 
 namespace Org.Brixen.Bean {
 	
-	public class HoverControlBean : ContentContainerBean, IHoverControlBean {
+	public class HoverAndClickControlBean : ClickControlBean, IHoverAndClickControlBean {
 		private IWebElement unhoverElement;
+
+		private int pollingTimeout = PolleableConstants.DefaultPollingTimeout;
+		private int pollingInterval = PolleableConstants.DefaultPollingInterval;
 
 		public IWebElement UnhoverElement {
 			get {
@@ -25,50 +29,79 @@ namespace Org.Brixen.Bean {
 
 		public bool UnhoverWithJavascript { get; set; } = false;
 
-		public bool ClickInsteadOfHover { get; set; } = false;
-			
 		public bool ClickWithJavascriptInsteadOfHover { get; set; } = false;
 
 		public bool UnhoverWithClickInstead { get; set; } = false;
 
 		public bool UnhoverWithJavascriptClickInstead { get; set; } = false;
 
+		public int PollingTimeout {
+			get {
+				return pollingTimeout;
+			}
+
+			set {
+				if(value < 0) {
+					throw new ArgumentOutOfRangeException("value", "Cannot specify a polling timeout less than 0 " + 
+						"seconds");
+				}
+
+				pollingTimeout = value;
+			}	
+		}
+
+		public int PollingInterval {
+			get {
+				return pollingInterval;
+			}
+
+			set {
+				if(value < 0) {
+					throw new ArgumentOutOfRangeException("value", "Cannot specify a polling interval less than 0 " + 
+						"seconds");
+				}
+
+				pollingInterval = value;
+			}	
+		}
+
 		public override string ToString() {
-			return String.Format("HoverControlBean({0}, UnhoverElement: {1}, HoverWithJavascript: {2}, " +
-				"UnhoverWithJavascript: {3}, ClickInsteadOfHover: {4}, ClickWithJavascriptInsteadOfHover: {5}, " + 
-				"UnhoverWithClickInstead: {6}, UnhoverWithJavascriptClickInstead: {7})", 
+			return String.Format("HoverAndClickControlBean({0}, UnhoverElement: {1}, HoverWithJavascript: {2}, " +
+				"UnhoverWithJavascript: {3}, ClickWithJavascriptInsteadOfHover: {4}, UnhoverWithClickInstead: {5}, " + 
+				"UnhoverWithJavascriptClickInstead: {6}, PollingTimeout: {7}, PollingInterval: {8})", 
 				base.ToString(), 
 				UnhoverElement != null ? UnhoverElement.ToString() : "null",
 				HoverWithJavascript.ToString(),
 				UnhoverWithJavascript.ToString(),
-				ClickInsteadOfHover.ToString(),
 				ClickWithJavascriptInsteadOfHover.ToString(),
 				UnhoverWithClickInstead.ToString(),
-				UnhoverWithJavascriptClickInstead.ToString());
+				UnhoverWithJavascriptClickInstead.ToString(),
+				PollingTimeout.ToString(),
+				PollingInterval.ToString());
 		}
 
 		public override bool Equals(System.Object obj) {
 			if (ReferenceEquals(null, obj)) return false;
 			if (ReferenceEquals(this, obj)) return true;
 			if (obj.GetType() != GetType()) return false;
-			return Equals(obj as IHoverControlBean);
+			return Equals(obj as IHoverAndClickControlBean);
 		}
 
-		public bool Equals(IHoverControlBean b) {
+		public bool Equals(IHoverAndClickControlBean b) {
 			if (ReferenceEquals(null, b)) return false;
 			return base.Equals(b) && 
 				UnhoverElement == b.UnhoverElement &&
 				HoverWithJavascript == b.HoverWithJavascript &&
 				UnhoverWithJavascript == b.UnhoverWithJavascript &&
-				ClickInsteadOfHover == b.ClickInsteadOfHover &&
 				ClickWithJavascriptInsteadOfHover == b.ClickWithJavascriptInsteadOfHover &&
 				UnhoverWithClickInstead == b.UnhoverWithClickInstead &&
-				UnhoverWithJavascriptClickInstead == b.UnhoverWithJavascriptClickInstead;
+				UnhoverWithJavascriptClickInstead == b.UnhoverWithJavascriptClickInstead && 
+				PollingTimeout == b.PollingTimeout && 
+				PollingInterval == b.PollingInterval;
 		}
 
 		public override int GetHashCode() {
 			unchecked { // Overflow is fine, just wrap
-
 				int unhoverElementHashCode = 
 					UnhoverElement != null ? 
 					UnhoverElement.GetHashCode() : 0;
@@ -77,10 +110,11 @@ namespace Org.Brixen.Bean {
 					^ unhoverElementHashCode
 					^ HoverWithJavascript.GetHashCode() 
 					^ UnhoverWithJavascript.GetHashCode() 
-					^ ClickInsteadOfHover.GetHashCode()
 					^ ClickWithJavascriptInsteadOfHover.GetHashCode()
 					^ UnhoverWithClickInstead.GetHashCode() 
-					^ UnhoverWithJavascriptClickInstead.GetHashCode();
+					^ UnhoverWithJavascriptClickInstead.GetHashCode()
+				    ^ PollingTimeout
+				    ^ PollingInterval;
 			}
 		}
 	}

@@ -16,7 +16,7 @@ namespace Org.Brixen.Bean.Tests {
 		[Category("ContentContainerBeanExpectedExceptionsTestGroup")]
 		[ExpectedException("System.ArgumentNullException", ExpectedMessage = "Cannot invoke setter for " + 
 			"ContentContainer property with a null parameter", MatchType=MessageMatch.Regex)]
-		public void shouldThrowExceptionForNullContainerElement() {
+		public void ShouldThrowExceptionForNullContainerElement() {
 			IContentContainerBean bean = new ContentContainerBean();
 			bean.ContentContainer = null;
 		}

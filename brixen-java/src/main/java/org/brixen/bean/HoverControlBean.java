@@ -46,7 +46,7 @@ public interface HoverControlBean extends ControlBean {
      * Determines whether the Javascript hover workaround for the web control is enabled.
      * <p>
      * If enabled, Javascript will be used to execute a mouse over on the web control. If not, the
-     * {@link WebElement#click} method will be used.
+     * {@link Actions#moveToElement} method will be used.
      *
      * @return      {@code true} if the Javascript hover workaround is enabled; {@code false} otherwise
      */

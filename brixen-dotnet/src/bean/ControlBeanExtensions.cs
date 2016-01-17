@@ -7,7 +7,7 @@ namespace Org.Brixen.Bean {
 	/// Extension methods to provide ability to determine runtime type of a web control implementing the 
 	/// <c>IControlBean</c> <c>interface</c>.
 	/// </summary>
-	public static class ControlBeanExtension {
+	public static class ControlBeanExtensions {
 
 		/// <summary>
 		/// Determines if this <c>IControlBean</c> specifies a web control that has meaningful behavior when clicked.

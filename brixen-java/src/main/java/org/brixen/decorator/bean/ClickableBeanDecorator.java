@@ -20,7 +20,7 @@ public interface ClickableBeanDecorator extends ClickableBean {
      * @return  the {@code LoadableBeanProvider} for the internal {@code ClickableBean} implementation to which this
      *          {@code interface} delegates all invocations of the methods required by {@code ClickableBean}
      */
-    LoadableBeanProvider<? extends ClickableBean> getClickableBeanProvider();
+    LoadableBeanProvider<ClickableBean> getClickableBeanProvider();
 
     /**
      * {@inheritDoc}

@@ -3,10 +3,8 @@ package org.brixen.bean;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import org.brixen.factory.LoadableBeanFactoryImpl;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.brixen.factory.LoadableBeanFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -71,12 +69,12 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
      * @throws IllegalArgumentException if there is already a {@code ControlBean} for a control with the specified name
      */
     @Override
-    public void addClickControl(String name, Class<? extends ClickControlBean> beanClass) {
+    public <BeanT extends ClickControlBean> void addClickControl(String name, BeanT bean) {
         if(controlBeans.get(name) != null) {
             throw new IllegalArgumentException("There is already a control named " + name);
         }
 
-        controlBeans.put(name, getLoadableBeanFactory().create(beanClass));
+        controlBeans.put(name, bean);
     }
 
     /**
@@ -85,12 +83,12 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
      * @throws IllegalArgumentException if there is already a {@code ControlBean} for a control with the specified name
      */
     @Override
-    public void addHoverControl(String name, Class<? extends HoverControlBean> beanClass) {
+    public <BeanT extends HoverControlBean> void addHoverControl(String name, BeanT bean) {
         if(controlBeans.get(name) != null) {
             throw new IllegalArgumentException("There is already a control named " + name);
         }
 
-        controlBeans.put(name, getLoadableBeanFactory().create(beanClass));
+        controlBeans.put(name, bean);
     }
 
     /**
@@ -99,12 +97,12 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
      * @throws IllegalArgumentException if there is already a {@code ControlBean} for a control with the specified name
      */
     @Override
-    public void addHoverAndClickControl(String name, Class<? extends HoverAndClickControlBean> beanClass) {
+    public <BeanT extends HoverAndClickControlBean> void addHoverAndClickControl(String name, BeanT bean) {
         if(controlBeans.get(name) != null) {
             throw new IllegalArgumentException("There is already a control named " + name);
         }
 
-        controlBeans.put(name, getLoadableBeanFactory().create(beanClass));
+        controlBeans.put(name, bean);
     }
 
     /**
@@ -402,14 +400,5 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
         } else {
             ((HoverAndClickControlBean) bean).setUnhoverWithJavascriptClickInstead(unhoverWithJavascriptClickInstead);
         }
-    }
-
-    /**
-     * Gets an instance of the factory which instantiates non-default {@code ControlBean} implementations.
-     *
-     * @return  an instance of the factory which instantiates non-default {@code ControlBean} implementations
-     */
-    protected LoadableBeanFactory getLoadableBeanFactory() {
-        return LoadableBeanFactoryImpl.getInstance();
     }
 }

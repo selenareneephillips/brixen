@@ -45,9 +45,5 @@
       <Project>{C8D1B60B-D62D-4CBA-8B2F-63323829408A}</Project>
       <Name>Org.Brixen.Bean</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\src\decorator\bean\Org.Brixen.Decorator.Bean.csproj">
-      <Project>{F1F19AB1-C28B-4FBD-9AC6-45DE32444141}</Project>
-      <Name>Org.Brixen.Decorator.Bean</Name>
-    </ProjectReference>
   </ItemGroup>
 </Project>

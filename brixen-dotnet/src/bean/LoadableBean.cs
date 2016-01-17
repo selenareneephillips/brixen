@@ -57,15 +57,13 @@ namespace Org.Brixen.Bean {
 
 		public override int GetHashCode() {
 			unchecked { // Overflow is fine, just wrap
-				int hashCode = 13;
-				hashCode = (hashCode * 397) ^ LoadTimeout;
-
 				int driverHashCode = 
 					Driver != null ? 
 					Driver.GetHashCode() : 0;
-				
-				hashCode = (hashCode * 397) ^ driverHashCode;
-				return hashCode;
+			
+				return (13 * 397) 
+					^ LoadTimeout 
+					^ driverHashCode;
 			}
 		}
 	}

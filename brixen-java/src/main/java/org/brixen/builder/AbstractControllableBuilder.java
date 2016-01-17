@@ -70,8 +70,8 @@ public abstract class AbstractControllableBuilder<
      */
     @SuppressWarnings("unchecked")
     @Override
-    public BuilderT addClickControl(String name, Class<? extends ClickControlBean> beanClass) {
-        getState().addClickControl(name, beanClass);
+    public <ControlBeanT extends ClickControlBean> BuilderT addClickControl(String name, ControlBeanT bean) {
+        getState().addClickControl(name, bean);
         return (BuilderT)this;
     }
 
@@ -80,8 +80,8 @@ public abstract class AbstractControllableBuilder<
      */
     @SuppressWarnings("unchecked")
     @Override
-    public BuilderT addHoverControl(String name, Class<? extends HoverControlBean> beanClass) {
-        getState().addHoverControl(name, beanClass);
+    public <ControlBeanT extends HoverControlBean> BuilderT addHoverControl(String name, ControlBeanT bean) {
+        getState().addHoverControl(name, bean);
         return (BuilderT)this;
     }
 
@@ -90,8 +90,9 @@ public abstract class AbstractControllableBuilder<
      */
     @SuppressWarnings("unchecked")
     @Override
-    public BuilderT addHoverAndClickControl(String name, Class<? extends HoverAndClickControlBean> beanClass) {
-        getState().addHoverAndClickControl(name, beanClass);
+    public <ControlBeanT extends HoverAndClickControlBean> BuilderT addHoverAndClickControl(String name, ControlBeanT
+            bean) {
+        getState().addHoverAndClickControl(name, bean);
         return (BuilderT)this;
     }
 

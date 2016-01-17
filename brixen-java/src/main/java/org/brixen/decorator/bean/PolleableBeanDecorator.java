@@ -20,7 +20,7 @@ public interface PolleableBeanDecorator extends PolleableBean {
      * @return  the {@code LoadableBeanProvider} for the internal {@code PolleableBean} implementation to which this
      *          {@code interface} delegates all invocations of the methods required by {@code PolleableBean}
      */
-    LoadableBeanProvider<? extends PolleableBean> getPolleableBeanProvider();
+    LoadableBeanProvider<PolleableBean> getPolleableBeanProvider();
 
     /**
      * {@inheritDoc}

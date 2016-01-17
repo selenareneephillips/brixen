@@ -81,7 +81,7 @@ namespace Org.Brixen.Bean {
 		}
 
 		/// <summary>
-		/// Gets or sets the  <see cref="OpenQA.Selenium.IWebElement.Click()"/> action workaround for the unhover 
+		/// Gets or sets the <see cref="OpenQA.Selenium.IWebElement.Click()"/> action workaround for the unhover 
 		/// element which is used to focus the mouse in a safe location away from the web control.
 		/// <para>
 		/// Care should be taken to ensure that clicking on the unhover element does not trigger undesired side effects 
@@ -112,8 +112,8 @@ namespace Org.Brixen.Bean {
 		/// moused over or clicked.
 		/// </summary>
 		/// <value>If <c>true</c>, the Javascript click action workaround for the unhover element is enabled; 
-		/// <c>false</c> otherwise</value>
-		bool UnhoverWithJavascriptClick {
+		/// <c>false</c> otherwise.</value>
+		bool UnhoverWithJavascriptClickInstead {
 			get;
 			set;
 		}

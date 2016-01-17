@@ -40,14 +40,11 @@ namespace Org.Brixen.Bean {
 
 		public override int GetHashCode() {
 			unchecked { // Overflow is fine, just wrap
-				int hashCode = base.GetHashCode();
-
 				int contentContainerHashCode = 
 					ContentContainer != null ? 
 					ContentContainer.GetHashCode() : 0;
 				
-				hashCode = (hashCode * 397) ^ contentContainerHashCode;
-				return hashCode;
+				return (base.GetHashCode() * 397) ^ contentContainerHashCode;
 			}
 		}
 	}
