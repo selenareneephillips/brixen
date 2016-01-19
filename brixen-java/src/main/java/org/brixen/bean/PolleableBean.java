@@ -1,5 +1,9 @@
 package org.brixen.bean;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@SuppressWarnings("UnusedDeclaration")
+@ParametersAreNonnullByDefault
 public interface PolleableBean extends LoadableBean {
 
     /**

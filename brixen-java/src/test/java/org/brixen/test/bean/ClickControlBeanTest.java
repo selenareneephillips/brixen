@@ -1,7 +1,7 @@
 package org.brixen.test.bean;
 
-import org.brixen.bean.ClickableBean;
-import org.brixen.bean.ClickableBeanImpl;
+import org.brixen.bean.ClickControlBean;
+import org.brixen.bean.ClickControlBeanImpl;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.openqa.selenium.WebElement;
@@ -9,12 +9,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static org.mockito.Mockito.when;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotEquals;
+import static org.testng.Assert.*;
 import static org.testng.Assert.assertTrue;
 
 @Test(groups = {"LoadableBeanTestGroup"})
-public class ClickableBeanTest {
+public class ClickControlBeanTest {
+
     private @Mock WebElement mockElementOne;
     private @Mock WebElement mockElementTwo;
 
@@ -23,26 +23,11 @@ public class ClickableBeanTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Test(groups = {"ToStringCallsSuperTestGroup", "BeanToStringCallsSuperTestGroup",
-            "ClickableBeanToStringCallsSuperTestGroup"}
-    )
-    public void shouldCallSuperForToString() {
-        final ClickableBean bean = new ClickableBeanImpl();
-
-        when(mockElementOne.toString()).thenReturn("Mock Container WebElement");
-        bean.setContentContainer(mockElementOne);
-
-        assertTrue(bean.toString().contains("contentContainer=Mock Container WebElement"), "toString() for " +
-                "ClickableBeanImpl does not include the content container field in ContainerBeanImpl: " +
-                bean.toString());
-    }
-
     @Test(groups = {"EqualityNegativeTestGroup", "BeanEqualityNegativeTestGroup",
-            "ClickableBeanEqualityNegativeTestGroup"}
-    )
+            "ClickControlBeanEqualityNegativeTestGroup"})
     public void shouldNotBeEqual() {
-        ClickableBean beanOne = new ClickableBeanImpl();
-        ClickableBean beanTwo = new ClickableBeanImpl();
+        ClickControlBean beanOne = new ClickControlBeanImpl();
+        ClickControlBean beanTwo = new ClickControlBeanImpl();
 
         beanOne.setContentContainer(mockElementOne);
         beanTwo.setContentContainer(mockElementTwo);
@@ -57,11 +42,11 @@ public class ClickableBeanTest {
     }
 
     @Test(groups = {"EqualityPositiveTestGroup", "BeanEqualityPositiveTestGroup",
-            "ClickableBeanEqualityPositiveTestGroup"}
+            "ClickControlBeanEqualityPositiveTestGroup"}
     )
     public void shouldBeEqual() {
-        ClickableBean beanOne = new ClickableBeanImpl();
-        ClickableBean beanTwo = new ClickableBeanImpl();
+        ClickControlBean beanOne = new ClickControlBeanImpl();
+        ClickControlBean beanTwo = new ClickControlBeanImpl();
 
         assertEquals(beanOne, beanTwo, "Two newly constructed beans should be equal before any setters are invoked");
 
@@ -77,8 +62,8 @@ public class ClickableBeanTest {
         assertEquals(beanOne, beanTwo, "Two beans should be equal if they have the same container element reference " +
                 "and same non-default JavaScript click workaround value");
 
-        beanOne = new ClickableBeanImpl();
-        beanTwo = new ClickableBeanImpl();
+        beanOne = new ClickControlBeanImpl();
+        beanTwo = new ClickControlBeanImpl();
 
         beanOne.setClickWithJavascript(true);
         beanTwo.setClickWithJavascript(true);
@@ -88,12 +73,12 @@ public class ClickableBeanTest {
     }
 
     @Test(groups = {"HashCodeCallsSuperTestGroup", "BeanHashCodeCallsSuperTestGroup",
-            "ClickableBeanHashCodeCallsSuperTestGroup"},
+            "ClickControlBeanHashCodeCallsSuperTestGroup"},
             dependsOnMethods = {"shouldCallSuperForToString"}
     )
     public void shouldCallSuperForHashCode() {
-        final ClickableBean bean = new ClickableBeanImpl();
-        final ClickableBean beanToCompare = new ClickableBeanImpl();
+        final ClickControlBean bean = new ClickControlBeanImpl();
+        final ClickControlBean beanToCompare = new ClickControlBeanImpl();
 
         assertEquals(bean.hashCode(), beanToCompare.hashCode(), "Hash codes for bean which have not had setters " +
                 "called should be equal, but are not: " + bean.toString() + ", " + beanToCompare.toString());
@@ -109,12 +94,12 @@ public class ClickableBeanTest {
     }
 
     @Test(groups = {"EqualsCallsSuperTestGroup", "BeanEqualsCallsSuperTestGroup",
-            "ClickableBeanEqualsCallsSuperTestGroup"},
+            "ClickControlBeanEqualsCallsSuperTestGroup"},
             dependsOnMethods = {"shouldCallSuperForToString", "shouldCallSuperForHashCode"}
     )
     public void shouldCallSuperForEquals() {
-        final ClickableBean bean = new ClickableBeanImpl();
-        final ClickableBean beanToCompare = new ClickableBeanImpl();
+        final ClickControlBean bean = new ClickControlBeanImpl();
+        final ClickControlBean beanToCompare = new ClickControlBeanImpl();
 
         assertEquals(bean, beanToCompare, "Equals method should return true, but did not: " + bean.toString() + ", " +
                 beanToCompare.toString());
@@ -126,5 +111,37 @@ public class ClickableBeanTest {
         beanToCompare.setContentContainer(mockElementOne);
         assertEquals(bean, beanToCompare, "Equals method should return true, but did not: " + bean.toString() + ", " +
                 beanToCompare.toString());
+    }
+
+    @Test(groups = {"ToStringCallsSuperTestGroup", "BeanToStringCallsSuperTestGroup",
+            "ClickControlBeanToStringCallsSuperTestGroup"}
+    )
+    public void shouldCallSuperForToString() {
+        ClickControlBean bean = new ClickControlBeanImpl();
+
+        when(mockElementOne.toString()).thenReturn("Mock Container WebElement");
+        bean.setContentContainer(mockElementOne);
+
+        assertTrue(bean.toString().contains("contentContainer=Mock Container WebElement"), "toString() for " +
+                "ClickControlBeanImpl does not include the content container field in ContainerBeanImpl: " +
+                bean.toString());
+    }
+
+    @Test
+    public void shouldReturnFalseForIsHoverControl() {
+        ClickControlBean bean = new ClickControlBeanImpl();
+        assertFalse(bean.isHoverControl());
+    }
+
+    @Test
+    public void shouldReturnTrueForIsClickControl() {
+        ClickControlBean bean = new ClickControlBeanImpl();
+        assertTrue(bean.isClickControl());
+    }
+
+    @Test
+    public void shouldReturnFalseForIsHoverAndClickControl() {
+        ClickControlBean bean = new ClickControlBeanImpl();
+        assertFalse(bean.isHoverAndClickControl());
     }
 }

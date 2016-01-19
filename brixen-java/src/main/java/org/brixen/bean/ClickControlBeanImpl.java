@@ -6,12 +6,16 @@ import lombok.ToString;
 import org.brixen.decorator.bean.LoadableBeanProvider;
 import org.brixen.decorator.bean.ClickableBeanDecorator;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 /**
  * Specifies all the data necessary to construct a <b>Selenium</b> page object that models a web control that has
  * meaningful side effects whenever it is clicked.
  */
 @ToString(callSuper = true, includeFieldNames = true)
 @EqualsAndHashCode(callSuper = true)
+@SuppressWarnings("UnusedDeclaration")
+@ParametersAreNonnullByDefault
 public class ClickControlBeanImpl extends ContentContainerBeanImpl implements ClickControlBean, ClickableBeanDecorator {
 
     /**

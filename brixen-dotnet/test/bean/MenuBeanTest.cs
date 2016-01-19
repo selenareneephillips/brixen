@@ -103,18 +103,18 @@ namespace Org.Brixen.Bean.Tests {
 			beanOne.OptionElements = optionsListOne;
 			beanTwo.OptionElements = optionsListOne;
 
-			Assert.AreEqual(beanOne, beanTwo, "Two beans should be equal if they have the same contrainer element " +
+			Assert.AreEqual(beanOne, beanTwo, "Two beans should be equal if they have the same container element " +
 				"references and the same empty option elements list reference");
 
 			optionsListOne.Add(mockOptionElement.Object);
 
-			Assert.AreEqual(beanOne, beanTwo, "Two beans should be equal if they have the same contrainer element " +
+			Assert.AreEqual(beanOne, beanTwo, "Two beans should be equal if they have the same container element " +
 				"references and the same non-empty option elements list reference");
 
 			optionsListTwo.Add(mockOptionElement.Object);
 			beanTwo.OptionElements = optionsListTwo;
 
-			Assert.AreEqual(beanOne, beanTwo, "Two beans should be equal if they have the same contrainer element " +
+			Assert.AreEqual(beanOne, beanTwo, "Two beans should be equal if they have the same container element " +
 				"references and two non-empty option elements list references containing the same object");
 
 			optionsListOne = new List<IWebElement>();

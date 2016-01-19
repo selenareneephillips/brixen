@@ -6,12 +6,16 @@ import org.brixen.decorator.bean.LoadableBeanProvider;
 import org.brixen.decorator.bean.PolleableBeanDecorator;
 import org.openqa.selenium.WebElement;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 /**
  * Specifies all the data necessary to construct a <b>Selenium</b> page object that models a web control that has
  * meaningful side effects whenever it is clicked and which must be moused over before it is clickable.
  */
 @ToString(callSuper = true, includeFieldNames = true)
 @EqualsAndHashCode(callSuper = true)
+@SuppressWarnings("UnusedDeclaration")
+@ParametersAreNonnullByDefault
 public class HoverAndClickControlBeanImpl extends ClickControlBeanImpl implements HoverAndClickControlBean,
         ClickableBeanDecorator, PolleableBeanDecorator {
 

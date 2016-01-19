@@ -5,6 +5,8 @@ import org.brixen.pageobject.Loadable;
 import org.openqa.selenium.WebElement;
 import org.brixen.factory.LoadableFactory;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 /**
  * Defines the contract for a builder of a <b>Selenium</b> page object which models a page object that wraps a
  * {@link WebElement} content container.
@@ -22,6 +24,7 @@ import org.brixen.factory.LoadableFactory;
  * @param <BuilderT>    the runtime type of this {@code ContentContainerBuilder}
  */
 @SuppressWarnings("UnusedDeclaration")
+@ParametersAreNonnullByDefault
 public interface ContentContainerBuilder<
             LoadableT extends Loadable,
             BeanT extends ContentContainerBean,

@@ -10,6 +10,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 /**
  * Defines the contract for a builder of a <b>Selenium</b> page object that models a component that contains web
  * controls that have meaningful side effects whenever they are clicked and/or moused over.
@@ -25,6 +27,7 @@ import org.openqa.selenium.interactions.Actions;
  *                          {@code ControllableBuilder} builds
  * @param <BuilderT>        the runtime type of this {@code ControllableBuilder}
  */
+@ParametersAreNonnullByDefault
 public interface ControllableBuilder<
             ControllableT extends Loadable,
             BeanT extends ControllableBean,

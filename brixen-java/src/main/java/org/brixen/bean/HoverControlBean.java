@@ -3,10 +3,14 @@ package org.brixen.bean;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 /**
  * Defines the contract for a data transfer object used to construct a <b>Selenium</b> page object that models a
  * web control that has meaningful side effects whenever it is moused over.
  */
+@SuppressWarnings("UnusedDeclaration")
+@ParametersAreNonnullByDefault
 public interface HoverControlBean extends ControlBean {
 
     /**

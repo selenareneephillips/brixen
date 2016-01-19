@@ -6,6 +6,8 @@ import org.brixen.factory.LoadableFactory;
 import org.brixen.pageobject.Loadable;
 import org.openqa.selenium.WebDriver;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 /**
  * Defines the contract for a builder of a basic <b>Selenium</b> page object.
  *
@@ -67,6 +69,7 @@ import org.openqa.selenium.WebDriver;
  *                      builds
  * @param <BuilderT>    the runtime type of this {@code LoadableBuilder}
  */
+@ParametersAreNonnullByDefault
 public interface LoadableBuilder<
             LoadableT extends Loadable,
             BeanT extends LoadableBean,

@@ -1,7 +1,9 @@
 package org.brixen.decorator.bean;
 
 import lombok.AccessLevel;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 import org.brixen.bean.LoadableBean;
 
 /**
@@ -13,6 +15,8 @@ import org.brixen.bean.LoadableBean;
  *
  * @param <BeanT>   the state bean to which this {@code LoadableBeanProvider} provides {@code protected} access
  */
+@ToString(includeFieldNames = true)
+@EqualsAndHashCode
 public class LoadableBeanProvider<BeanT extends LoadableBean> {
 
     /**

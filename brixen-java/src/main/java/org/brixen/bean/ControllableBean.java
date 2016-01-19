@@ -7,12 +7,15 @@ import org.openqa.selenium.WebElement;
 import org.brixen.pageobject.HoverAndClickControl;
 import org.brixen.pageobject.HoverControl;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.Map;
 
 /**
  * Defines the contract for a data transfer object used to construct a <b>Selenium</b> page object that models a
  * component that contains web controls that have meaningful side effects whenever they are clicked and/or moused over.
  */
+@SuppressWarnings("UnusedDeclaration")
+@ParametersAreNonnullByDefault
 public interface ControllableBean extends ContentContainerBean {
 
     /**
@@ -22,6 +25,7 @@ public interface ControllableBean extends ContentContainerBean {
      *
      * @param name  the name of the {@code ClickControl} to add to the page object
      */
+    @SuppressWarnings("NullableProblems")
     void addClickControl(String name);
 
     /**
@@ -31,6 +35,7 @@ public interface ControllableBean extends ContentContainerBean {
      *
      * @param name  the name of the {@code HoverControl} to add to the page object
      */
+    @SuppressWarnings("NullableProblems")
     void addHoverControl(String name);
 
     /**
@@ -41,6 +46,7 @@ public interface ControllableBean extends ContentContainerBean {
      *
      * @param name  the name of the {@code HoverAndClickControl} to add to the page object
      */
+    @SuppressWarnings("NullableProblems")
     void addHoverAndClickControl(String name);
 
     /**
@@ -50,6 +56,7 @@ public interface ControllableBean extends ContentContainerBean {
      * @param name     the name of the {@code ClickControl} to add to the page object
      * @param bean     the {@code ClickControlBean} to specify the {@code ClickControl}
      */
+    @SuppressWarnings("NullableProblems")
     <BeanT extends ClickControlBean> void addClickControl(String name, BeanT bean);
 
     /**
@@ -59,6 +66,7 @@ public interface ControllableBean extends ContentContainerBean {
      * @param name     the name of the {@code HoverControl} to add to the page object
      * @param bean     the {@code HoverControlBean} to specify the {@code HoverControl}
      */
+    @SuppressWarnings("NullableProblems")
     <BeanT extends HoverControlBean> void addHoverControl(String name, BeanT bean);
 
     /**
@@ -68,6 +76,7 @@ public interface ControllableBean extends ContentContainerBean {
      * @param name     the name of the {@code HoverAndClickControl} to add to the page object
      * @param bean     the {@code HoverAndClickControlBean} to specify the {@code HoverAndClickControl}
      */
+    @SuppressWarnings("NullableProblems")
     <BeanT extends HoverAndClickControlBean> void addHoverAndClickControl(String name, BeanT bean);
 
     /**
@@ -76,6 +85,7 @@ public interface ControllableBean extends ContentContainerBean {
      * @param name      the name of the web control
      * @param driver    the driver to use for browsing the page object
      */
+    @SuppressWarnings("NullableProblems")
     void setControlDriver(String name, WebDriver driver);
 
     /**
@@ -84,6 +94,7 @@ public interface ControllableBean extends ContentContainerBean {
      * @param name          the name of the web control
      * @param timeout       the load timeout in seconds for the web control
      */
+    @SuppressWarnings("NullableProblems")
     void setControlLoadTimeout(String name, int timeout);
 
     /**
@@ -92,6 +103,7 @@ public interface ControllableBean extends ContentContainerBean {
      * @param name                the name of the web control
      * @param contentContainer    the {@code WebElement} that contains the specified web control
      */
+    @SuppressWarnings("NullableProblems")
     void setControlContentContainer(String name, WebElement contentContainer);
 
     /**
@@ -102,6 +114,7 @@ public interface ControllableBean extends ContentContainerBean {
      * @param timeout     the timeout in seconds for polling the web control to determine if an expected condition has
      *                    been satisfied
      */
+    @SuppressWarnings("NullableProblems")
     void setControlPollingTimeout(String name, int timeout);
 
     /**
@@ -112,6 +125,7 @@ public interface ControllableBean extends ContentContainerBean {
      * @param interval    the interval in seconds for polling the web control to determine if an expected condition has
      *                    been satisfied
      */
+    @SuppressWarnings("NullableProblems")
     void setControlPollingInterval(String name, int interval);
 
     /**
@@ -125,6 +139,7 @@ public interface ControllableBean extends ContentContainerBean {
      * @param unhoverElement      the {@code WebElement} to hover over in order to unhover the specified control by
      *                            ensuring that mouse focus is completely removed from it
      */
+    @SuppressWarnings("NullableProblems")
     void setControlUnhoverElement(String name, WebElement unhoverElement);
 
     /**
@@ -139,6 +154,7 @@ public interface ControllableBean extends ContentContainerBean {
      * @param hoverWithJavascript    if {@code true}, enables the Javascript hover workaround workaround; if
      *                               {@code false}, disables it
      */
+    @SuppressWarnings("NullableProblems")
     void setHoverControlWithJavascript(String name, boolean hoverWithJavascript);
 
     /**
@@ -154,6 +170,7 @@ public interface ControllableBean extends ContentContainerBean {
      * @param unhoverWithJavascript    if {@code true}, enables the Javascript hover workaround for the unhover
      *                                 element; if {@code false}, disables it
      */
+    @SuppressWarnings("NullableProblems")
     void setUnhoverControlWithJavascript(String name, boolean unhoverWithJavascript);
 
     /**
@@ -168,6 +185,7 @@ public interface ControllableBean extends ContentContainerBean {
      * @param clickWithJavascript    if {@code true}, enables the Javascript click workaround; if {@code false},
      *                               disables it
      */
+    @SuppressWarnings("NullableProblems")
     void setClickControlWithJavascript(String name, boolean clickWithJavascript);
 
     /**
@@ -187,6 +205,7 @@ public interface ControllableBean extends ContentContainerBean {
      * @param clickInsteadOfHover    if {@code true}, enables the {@link WebElement#click} action workaround; if
      *                               {@code false}, disables it
      */
+    @SuppressWarnings("NullableProblems")
     void setClickControlInsteadOfHover(String name, boolean clickInsteadOfHover);
 
     /**
@@ -220,6 +239,7 @@ public interface ControllableBean extends ContentContainerBean {
      * @param clickWithJavascriptInsteadOfHover     if {@code true}, enables the Javascript click action workaround; if
      *                                              {@code false}, disables it
      */
+    @SuppressWarnings("NullableProblems")
     void setClickControlWithJavascriptInsteadOfHover(String name, boolean clickWithJavascriptInsteadOfHover);
 
     /**
@@ -236,6 +256,7 @@ public interface ControllableBean extends ContentContainerBean {
      * @param unhoverWithClickInstead  if {@code true}, enables the {@link WebElement#click} action workaround for the
      *                                 unhover element; if {@code false}, disables it
      */
+    @SuppressWarnings("NullableProblems")
     void setUnhoverControlWithClickInstead(String name, boolean unhoverWithClickInstead);
 
     /**
@@ -252,6 +273,7 @@ public interface ControllableBean extends ContentContainerBean {
      * @param unhoverWithJavascriptClickInstead  if {@code true}, enables the Javascript click action workaround for
      *                                           the unhover element; if {@code false}, disables it
      */
+    @SuppressWarnings("NullableProblems")
     void setUnhoverControlWithJavascriptClickInstead(String name, boolean unhoverWithJavascriptClickInstead);
 
     /**

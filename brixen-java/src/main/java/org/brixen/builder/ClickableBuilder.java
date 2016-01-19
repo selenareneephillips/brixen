@@ -6,6 +6,8 @@ import org.brixen.pageobject.Clickable;
 import org.brixen.factory.LoadableFactory;
 import org.openqa.selenium.WebElement;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 /**
  * Defines the contract for a builder of a <b>Selenium</b> page object which models a {@code Clickable} page object.
  *
@@ -21,6 +23,7 @@ import org.openqa.selenium.WebElement;
  *                       {@code ClickableBuilder} builds
  * @param <BuilderT>     the runtime type of this {@code ClickableBuilder}
  */
+@ParametersAreNonnullByDefault
 public interface ClickableBuilder<
             ClickableT extends Clickable,
             BeanT extends ClickableBean,

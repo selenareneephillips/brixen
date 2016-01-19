@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.annotation.Nonnegative;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 import static org.brixen.pageobject.Polleable.DEFAULT_POLLING_TIMEOUT;
 import static org.brixen.pageobject.Polleable.DEFAULT_POLLING_INTERVAL;
@@ -17,6 +18,8 @@ import static org.brixen.pageobject.Polleable.DEFAULT_POLLING_INTERVAL;
  */
 @ToString(callSuper = true, includeFieldNames = true)
 @EqualsAndHashCode(callSuper = true)
+@SuppressWarnings("UnusedDeclaration")
+@ParametersAreNonnullByDefault
 public class PolleableBeanImpl extends LoadableBeanImpl implements PolleableBean {
 
     /**

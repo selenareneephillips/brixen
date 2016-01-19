@@ -9,6 +9,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 /**
  * Defines the contract for a data transfer object used to construct a basic <b>Selenium</b> page object.
  */
+@SuppressWarnings("UnusedDeclaration")
 @ParametersAreNonnullByDefault
 public interface LoadableBean {
 

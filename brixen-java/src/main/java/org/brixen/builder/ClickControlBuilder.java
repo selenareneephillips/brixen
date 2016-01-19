@@ -4,6 +4,8 @@ import org.brixen.bean.ClickControlBean;
 import org.brixen.factory.LoadableFactory;
 import org.brixen.pageobject.ClickControl;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 /**
  * Defines the contract for a builder of a <b>Selenium</b> page object that models a web control that has meaningful
  * side effects whenever it is clicked.
@@ -20,6 +22,7 @@ import org.brixen.pageobject.ClickControl;
  *                     {@code ClickControlBuilder} builds
  * @param <BuilderT>   the runtime type of this {@code ClickControlBuilder}
  */
+@ParametersAreNonnullByDefault
 public interface ClickControlBuilder<
             ControlT extends ClickControl,
             BeanT extends ClickControlBean,

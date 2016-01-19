@@ -6,6 +6,7 @@ import org.brixen.pageobject.Loadable;
 import org.openqa.selenium.WebDriver;
 
 import javax.annotation.Nonnegative;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 /**
  * Specifies all the data necessary to construct a basic <b>Selenium</b> page object.
@@ -13,6 +14,8 @@ import javax.annotation.Nonnegative;
 @XSlf4j
 @ToString(includeFieldNames = true)
 @EqualsAndHashCode
+@SuppressWarnings("UnusedDeclaration")
+@ParametersAreNonnullByDefault
 public class LoadableBeanImpl implements LoadableBean {
 
     /** The {@code WebDriver} to use for browsing the page object */

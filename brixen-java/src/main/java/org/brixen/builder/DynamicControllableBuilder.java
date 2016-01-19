@@ -4,6 +4,8 @@ import org.brixen.bean.DynamicControllableBean;
 import org.brixen.factory.LoadableFactory;
 import org.brixen.pageobject.Polleable;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 /**
  * Defines the contract for a builder of a <b>Selenium</b> page object that models a component that contains web
  * controls that have meaningful side effects with state changes that need to be polled for an expected condition when
@@ -21,6 +23,7 @@ import org.brixen.pageobject.Polleable;
  *                          {@code DynamicControllableBuilder} builds
  * @param <BuilderT>        the runtime type of this {@code DynamicControllableBuilder}
  */
+@ParametersAreNonnullByDefault
 public interface DynamicControllableBuilder<
             ControllableT extends Polleable,
             BeanT extends DynamicControllableBean,

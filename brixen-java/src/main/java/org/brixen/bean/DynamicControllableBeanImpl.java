@@ -6,6 +6,8 @@ import lombok.ToString;
 import org.brixen.decorator.bean.PolleableBeanDecorator;
 import org.brixen.decorator.bean.LoadableBeanProvider;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 /**
  * Specifies all the data necessary to construct a <b>Selenium</b> page object that models a component that contains
  * web controls that have meaningful side effects with state changes that need to be polled for an expected condition
@@ -13,6 +15,8 @@ import org.brixen.decorator.bean.LoadableBeanProvider;
  */
 @ToString(callSuper = true, includeFieldNames = true)
 @EqualsAndHashCode(callSuper = true)
+@SuppressWarnings("UnusedDeclaration")
+@ParametersAreNonnullByDefault
 public class DynamicControllableBeanImpl extends ControllableBeanImpl implements DynamicControllableBean,
         PolleableBeanDecorator {
 

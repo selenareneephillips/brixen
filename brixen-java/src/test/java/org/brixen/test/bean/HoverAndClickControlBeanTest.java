@@ -1,21 +1,18 @@
 package org.brixen.test.bean;
 
-import org.brixen.bean.HoverControlBean;
-import org.brixen.bean.HoverControlBeanImpl;
+import org.brixen.bean.HoverAndClickControlBean;
+import org.brixen.bean.HoverAndClickControlBeanImpl;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import static org.mockito.Mockito.when;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertNotEquals;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.*;
 
 @Test(groups = {"LoadableBeanTestGroup"})
-public class HoverControlBeanTest {
+public class HoverAndClickControlBeanTest {
     private @Mock WebElement mockContainerElementOne;
     private @Mock WebElement mockContainerElementTwo;
     private @Mock WebElement mockUnhoverElementOne;
@@ -28,26 +25,39 @@ public class HoverControlBeanTest {
 
     @SuppressWarnings("ConstantConditions")
     @Test(groups = {"ExpectedExceptionsTestGroup", "BeanExpectedExceptionsTestGroup",
-            "HoverControlBeanExpectedExceptionsTestGroup"},
+            "HoverAndClickControlBeanExpectedExceptionsTestGroup"},
             expectedExceptions = { NullPointerException.class }
     )
     public void shouldThrowExceptionForNullUnhoverElement() {
-        final HoverControlBean bean = new HoverControlBeanImpl();
+        final HoverAndClickControlBean bean = new HoverAndClickControlBeanImpl();
         bean.setUnhoverElement(null);
     }
 
+    @Test(groups = {"ExpectedExceptionsTestGroup", "BeanExpectedExceptionsTestGroup",
+            "HoverAndClickControlBeanExpectedExceptionsTestGroup"},
+            expectedExceptions = { IllegalArgumentException.class },
+            expectedExceptionsMessageRegExp = "Cannot specify a polling timeout less than 0 seconds"
+    )
+    public void shouldThrowExceptionForNegativePollingTimeout() {
+        HoverAndClickControlBean bean = new HoverAndClickControlBeanImpl();
+        bean.setPollingTimeout(-1);
+    }
+
+    @Test(groups = {"ExpectedExceptionsTestGroup", "BeanExpectedExceptionsTestGroup",
+            "HoverAndClickControlBeanExpectedExceptionsTestGroup"},
+            expectedExceptions = { IllegalArgumentException.class },
+            expectedExceptionsMessageRegExp = "Cannot specify a polling interval less than 0 seconds")
+    public void shouldThrowExceptionForNegativePollingInterval() {
+        HoverAndClickControlBean bean = new HoverAndClickControlBeanImpl();
+        bean.setPollingInterval(-1);
+    }
+
     @Test(groups = {"EqualityNegativeTestGroup", "BeanEqualityNegativeTestGroup",
-            "HoverControlBeanEqualityNegativeTestGroup"})
+            "HoverAndClickControlBeanEqualityNegativeTestGroup"})
     public void shouldNotBeEqual() {
-        HoverControlBean beanOne = new HoverControlBeanImpl();
-        HoverControlBean beanTwo = new HoverControlBeanImpl();
+        HoverAndClickControlBean beanOne = new HoverAndClickControlBeanImpl();
+        HoverAndClickControlBean beanTwo = new HoverAndClickControlBeanImpl();
 
-        beanOne.setContentContainer(mockContainerElementOne);
-        beanTwo.setContentContainer(mockContainerElementTwo);
-
-        assertNotEquals(beanOne, beanTwo, "Beans with different container element references should not be equal");
-
-        beanTwo.setContentContainer(mockContainerElementOne);
         beanOne.setUnhoverElement(mockUnhoverElementOne);
 
         assertNotEquals(beanOne, beanTwo, "Beans with different unhover element references should not be equal");
@@ -69,12 +79,7 @@ public class HoverControlBeanTest {
                 "equal");
 
         beanTwo.setUnhoverWithJavascript(true);
-        beanOne.setClickInsteadOfHover(true);
 
-        assertNotEquals(beanOne, beanTwo, "Beans with different click action hover workaround values should not be " +
-                "equal");
-
-        beanTwo.setClickInsteadOfHover(true);
         beanOne.setClickWithJavascriptInsteadOfHover(true);
 
         assertNotEquals(beanOne, beanTwo, "Beans with different JavaScript click action hover workaround values " +
@@ -91,22 +96,30 @@ public class HoverControlBeanTest {
 
         assertNotEquals(beanOne, beanTwo, "Beans with different JavaScript click action unhover workaround values " +
                 "should not be equal");
+
+        beanTwo.setUnhoverWithJavascriptClickInstead(true);
+        beanOne.setLoadTimeout(40);
+
+        assertNotEquals(beanOne, beanTwo, "Beans with different load timeouts should not be equal");
+
+        beanOne.setLoadTimeout(30);
+        beanTwo.setPollingTimeout(40);
+
+        assertNotEquals(beanOne, beanTwo, "Beans with different polling timeouts should not be equal");
+
+        beanTwo.setPollingTimeout(30);
+        beanTwo.setPollingInterval(5);
+
+        assertNotEquals(beanOne, beanTwo, "Beans with different polling intervals should not be equal");
     }
 
     @Test(groups = {"EqualityPositiveTestGroup", "BeanEqualityPositiveTestGroup",
-            "HoverControlBeanEqualityPositiveTestGroup"}
-    )
+            "HoverAndClickControlBeanEqualityPositiveTestGroup"})
     public void shouldBeEqual() {
-        HoverControlBean beanOne = new HoverControlBeanImpl();
-        HoverControlBean beanTwo = new HoverControlBeanImpl();
+        HoverAndClickControlBean beanOne = new HoverAndClickControlBeanImpl();
+        HoverAndClickControlBean beanTwo = new HoverAndClickControlBeanImpl();
 
         assertEquals(beanOne, beanTwo, "Two newly constructed beans should be equal before any setters are invoked");
-
-        beanOne.setContentContainer(mockContainerElementOne);
-        beanTwo.setContentContainer(mockContainerElementOne);
-
-        assertEquals(beanOne, beanTwo, "Two beans should be equal if they have the same container element reference " +
-                "and same default JavaScript click workaround value");
 
         beanOne.setUnhoverElement(mockUnhoverElementOne);
         beanTwo.setUnhoverElement(mockUnhoverElementOne);
@@ -130,14 +143,6 @@ public class HoverControlBeanTest {
 
         beanOne.setUnhoverWithJavascript(false);
         beanTwo.setUnhoverWithJavascript(false);
-        beanOne.setClickInsteadOfHover(true);
-        beanTwo.setClickInsteadOfHover(true);
-
-        assertEquals(beanOne, beanTwo, "Two beans should be equal if they have the same container and unhover " +
-                "element references and same non-default click action hover workaround value");
-
-        beanOne.setClickInsteadOfHover(false);
-        beanTwo.setClickInsteadOfHover(false);
         beanOne.setClickWithJavascriptInsteadOfHover(true);
         beanTwo.setClickWithJavascriptInsteadOfHover(true);
 
@@ -168,67 +173,81 @@ public class HoverControlBeanTest {
         assertEquals(beanOne, beanTwo, "Two beans should be equal if they have the same container and unhover " +
                 "element references and same non-default JavaScript click action unhover workaround value");
 
-        beanOne = new HoverControlBeanImpl();
-        beanTwo = new HoverControlBeanImpl();
+        beanOne.setUnhoverWithJavascriptClickInstead(false);
+        beanTwo.setUnhoverWithJavascriptClickInstead(false);
+        beanOne.setPollingTimeout(40);
+        beanTwo.setPollingTimeout(40);
+        beanOne.setPollingInterval(5);
+        beanTwo.setPollingInterval(5);
+
+        assertEquals(beanOne, beanTwo, "Two beans should be equal if they have the same container and unhover " +
+                "element references and and the same non-default polling timeout and polling interval");
+
+        beanOne = new HoverAndClickControlBeanImpl();
+        beanTwo = new HoverAndClickControlBeanImpl();
 
         beanOne.setHoverWithJavascript(true);
         beanTwo.setHoverWithJavascript(true);
         beanOne.setUnhoverWithJavascript(true);
         beanTwo.setUnhoverWithJavascript(true);
-        beanOne.setClickInsteadOfHover(true);
-        beanTwo.setClickInsteadOfHover(true);
         beanOne.setClickWithJavascriptInsteadOfHover(true);
         beanTwo.setClickWithJavascriptInsteadOfHover(true);
         beanOne.setUnhoverWithClickInstead(true);
         beanTwo.setUnhoverWithClickInstead(true);
         beanOne.setUnhoverWithJavascriptClickInstead(true);
         beanTwo.setUnhoverWithJavascriptClickInstead(true);
+        beanOne.setPollingTimeout(40);
+        beanTwo.setPollingTimeout(40);
+        beanOne.setPollingInterval(5);
+        beanTwo.setPollingInterval(5);
 
-        assertEquals(beanOne, beanTwo, "Two beans should be equal if they have null container and unhover " +
-                 "element references and same non-default JavaScript hover workaround values");
+        assertEquals(beanOne, beanTwo, "Two beans should be equal if they have null container and unhover element " +
+                "references, the same non-default JavaScript hover workaround values and the same non-default " +
+                "polling timeout and polling interval");
     }
 
     @Test(groups = {"ToStringCallsSuperTestGroup", "BeanToStringCallsSuperTestGroup",
-            "HoverControlBeanToStringCallsSuperTestGroup"}
+            "HoverAndClickControlBeanToStringCallsSuperTestGroup"}
     )
     public void shouldCallSuperForToString() {
-        final HoverControlBean bean = new HoverControlBeanImpl();
+        HoverAndClickControlBean bean = new HoverAndClickControlBeanImpl();
 
         when(mockContainerElementOne.toString()).thenReturn("Mock Container WebElement");
         bean.setContentContainer(mockContainerElementOne);
 
         assertTrue(bean.toString().contains("contentContainer=Mock Container WebElement"), "toString() for " +
-                "HoverControlBeanImpl does not include the content container field in ContainerBeanImpl: " +
+                "HoverControlAndClickBeanImpl does not include the content container field in ContainerBeanImpl: " +
                 bean.toString());
     }
 
-    @Test(groups = {"HashCodeCallsSuperTestGroup", "BeanHashCodeCallsSuperTestGroup",
-            "HoverControlBeanHashCodeCallsSuperTestGroup"}, dependsOnMethods = {"shouldCallSuperForToString"}
+    @Test(groups = {"EqualsCallsSuperTestGroup", "BeanEqualsCallsSuperTestGroup",
+            "HoverAndClickControlBeanEqualsCallsSuperTestGroup"}, dependsOnMethods = {"shouldCallSuperForToString"}
     )
     public void shouldCallSuperForHashCode() {
-        final HoverControlBean bean = new HoverControlBeanImpl();
-        final HoverControlBean beanToCompare = new HoverControlBeanImpl();
+        HoverAndClickControlBean bean = new HoverAndClickControlBeanImpl();
+        HoverAndClickControlBean beanToCompare = new HoverAndClickControlBeanImpl();
 
         assertEquals(bean.hashCode(), beanToCompare.hashCode(), "Hash codes for bean which have not had setters " +
                 "called should be equal, but are not: " + bean.toString() + ", " + beanToCompare.toString());
 
-        bean.setContentContainer(mockContainerElementOne);
+        bean.setClickWithJavascript(true);
         assertNotEquals(bean.hashCode(), beanToCompare.hashCode(), "Hash codes for bean which have different values " +
-                "for their content container fields should not be equal, but are: " + bean.toString() + ", " +
-                beanToCompare.toString());
+                "for their Javascript click workaround fields should not be equal, but are: " + bean.toString() +
+                ", " + beanToCompare.toString());
 
-        beanToCompare.setContentContainer(mockContainerElementOne);
-        assertEquals(bean.hashCode(), beanToCompare.hashCode(), "Hash codes for bean which have the same content " +
-                "container should be equal, but are not: " + bean.toString() + ", " + beanToCompare.toString());
+        beanToCompare.setClickWithJavascript(true);
+        assertEquals(bean.hashCode(), beanToCompare.hashCode(), "Hash codes for bean which have the same Javascript " +
+                "click workaround value should be equal, but are not: " + bean.toString() + ", " +
+                beanToCompare.toString());
     }
 
     @Test(groups = {"EqualsCallsSuperTestGroup", "BeanEqualsCallsSuperTestGroup",
-            "HoverControlBeanEqualsCallsSuperTestGroup"},
+            "HoverAndClickControlBeanEqualsCallsSuperTestGroup"},
             dependsOnMethods = {"shouldCallSuperForToString", "shouldCallSuperForHashCode"}
     )
     public void shouldCallSuperForEquals() {
-        final HoverControlBean bean = new HoverControlBeanImpl();
-        final HoverControlBean beanToCompare = new HoverControlBeanImpl();
+        final HoverAndClickControlBean bean = new HoverAndClickControlBeanImpl();
+        final HoverAndClickControlBean beanToCompare = new HoverAndClickControlBeanImpl();
 
         assertEquals(bean, beanToCompare, "Equals method should return true, but did not: " + bean.toString() + ", " +
                 beanToCompare.toString());
@@ -243,20 +262,20 @@ public class HoverControlBeanTest {
     }
 
     @Test
-    public void shouldReturnTrueForIsHoverControl() {
-        final HoverControlBean bean = new HoverControlBeanImpl();
-        Assert.assertTrue(bean.isHoverControl());
+    public void shouldReturnFalseForIsHoverControl() {
+        HoverAndClickControlBean bean = new HoverAndClickControlBeanImpl();
+        assertFalse(bean.isHoverControl());
     }
 
     @Test
-    public void shouldReturnFalseForIsClickControl() {
-        final HoverControlBean bean = new HoverControlBeanImpl();
-        Assert.assertFalse(bean.isClickControl());
+    public void shouldReturnTrueForIsClickControl() {
+        HoverAndClickControlBean bean = new HoverAndClickControlBeanImpl();
+        assertTrue(bean.isClickControl());
     }
 
     @Test
-    public void shouldReturnFalseForIsHoverAndClickControl() {
-        final HoverControlBean bean = new HoverControlBeanImpl();
-        Assert.assertFalse(bean.isHoverAndClickControl());
+    public void shouldReturnTrueForIsHoverAndClickControl() {
+        HoverAndClickControlBean bean = new HoverAndClickControlBeanImpl();
+        assertTrue(bean.isHoverAndClickControl());
     }
 }

@@ -7,6 +7,8 @@ import org.brixen.bean.HoverControlBean;
 import org.brixen.pageobject.HoverControl;
 import org.openqa.selenium.interactions.Actions;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 /**
  * Defines the contract for a builder of a <b>Selenium</b> page object which models a web control that has meaningful
  * side effects whenever it is moused over.
@@ -24,6 +26,7 @@ import org.openqa.selenium.interactions.Actions;
  * @param <BuilderT>    the runtime type of this {@code HoverControlBuilder}
  *
  */
+@ParametersAreNonnullByDefault
 public interface HoverControlBuilder<
             ControlT extends HoverControl,
             BeanT extends HoverControlBean,

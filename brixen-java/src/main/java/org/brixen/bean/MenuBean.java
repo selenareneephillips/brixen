@@ -2,17 +2,21 @@ package org.brixen.bean;
 
 import org.openqa.selenium.WebElement;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 /**
  * Defines the contract for a data transfer object used to construct a <b>Selenium</b> page object that models a menu.
  */
+@SuppressWarnings("UnusedDeclaration")
+@ParametersAreNonnullByDefault
 public interface MenuBean extends ContentContainerBean {
     /**
      * Sets the list of {@code WebElements} that encapsulate the options on the menu.
      *
      * @param optionElements    the list of {@code WebElements} that encapsulate the options on the menu
      */
+    @SuppressWarnings("NullableProblems")
     void setOptionElements(List<WebElement> optionElements);
 
     /**

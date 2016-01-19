@@ -3,12 +3,16 @@ package org.brixen.bean;
 import lombok.*;
 import org.openqa.selenium.WebElement;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 /**
  * Specifies all the data necessary to construct a <b>Selenium</b> page object that models a web control that has
  * meaningful side effects whenever it is moused over.
  */
 @ToString(callSuper = true, includeFieldNames = true)
 @EqualsAndHashCode(callSuper = true)
+@SuppressWarnings("UnusedDeclaration")
+@ParametersAreNonnullByDefault
 public class HoverControlBeanImpl extends ContentContainerBeanImpl implements HoverControlBean {
 
     /** The element to send the focus to when unhovering the web control */

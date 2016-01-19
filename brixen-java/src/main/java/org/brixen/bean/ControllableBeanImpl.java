@@ -6,6 +6,7 @@ import lombok.ToString;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,11 +16,13 @@ import java.util.Map;
  */
 @ToString(callSuper = true, includeFieldNames = true)
 @EqualsAndHashCode(callSuper = true)
+@SuppressWarnings("UnusedDeclaration")
+@ParametersAreNonnullByDefault
 public class ControllableBeanImpl extends ContentContainerBeanImpl implements ControllableBean {
 
     /** The {@code ControlBeans} that specify the web controlBeans for the page object */
     @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
-    private @Getter Map<String,ControlBean> controlBeans = new HashMap<>();
+    private @Getter(onMethod=@__(@Override)) Map<String,ControlBean> controlBeans = new HashMap<>();
 
     /**
      * {@inheritDoc}

@@ -1,11 +1,9 @@
 package org.brixen.bean;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.openqa.selenium.WebElement;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,10 +12,13 @@ import java.util.List;
  */
 @ToString(callSuper = true, includeFieldNames = true)
 @EqualsAndHashCode(callSuper = true)
+@SuppressWarnings("UnusedDeclaration")
+@ParametersAreNonnullByDefault
 public class MenuBeanImpl extends ContentContainerBeanImpl implements MenuBean {
 
     /** The list of the {@code WebElements} that encapsulate the options on the menu */
-    private @Getter @Setter List<WebElement> optionElements = new ArrayList<>();
+    private @Getter(onMethod=@__(@Override)) @Setter(onMethod=@__(@Override)) @NonNull List<WebElement>
+            optionElements = new ArrayList<>();
 
     /**
      * If {@code true}, a <b>JavaScript</b> workaround must be used to click a menu option because the native

@@ -5,6 +5,8 @@ import org.brixen.config.PolleableConfig;
 import org.brixen.pageobject.Polleable;
 import org.brixen.factory.LoadableFactory;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 /**
  * Defines the contract for a builder of a <b>Selenium</b> page object which models a dynamic pageobject which needs to
  * be polled on intervals for an expected condition via a {@link org.openqa.selenium.support.ui.FluentWait}.
@@ -21,6 +23,7 @@ import org.brixen.factory.LoadableFactory;
  *                      {@code PolleableBuilder} builds
  * @param <BuilderT>    the runtime type of this {@code PolleableBuilder}
  */
+@ParametersAreNonnullByDefault
 public interface PolleableBuilder<
             PolleableT extends Polleable,
             BeanT extends PolleableBean,

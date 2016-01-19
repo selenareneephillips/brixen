@@ -6,6 +6,8 @@ import org.brixen.pageobject.Expandable;
 import org.brixen.pageobject.Menu;
 import org.brixen.pageobject.Clickable;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 /**
  * Defines the contract for a builder of a <b>Selenium</b> page object which models a drop down menu.
  *
@@ -23,6 +25,7 @@ import org.brixen.pageobject.Clickable;
  *
  */
 @SuppressWarnings("UnusedDeclaration")
+@ParametersAreNonnullByDefault
 public interface DropDownMenuBuilder<
             MenuT extends Menu<? extends Clickable> & Expandable,
             BeanT extends DropDownMenuBean,

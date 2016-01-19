@@ -7,6 +7,7 @@ import org.brixen.config.MenuConfig;
 import org.brixen.pageobject.Menu;
 import org.brixen.factory.LoadableFactory;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 /**
@@ -23,6 +24,7 @@ import java.util.List;
  * @param <BeanT>       the data transfer object used to construct the menu that this {@code MenuBuilder} builds
  * @param <BuilderT>    the runtime type of this {@code MenuBuilder}
  */
+@ParametersAreNonnullByDefault
 public interface MenuBuilder<
             MenuT extends Menu<? extends Clickable>,
             BeanT extends MenuBean,

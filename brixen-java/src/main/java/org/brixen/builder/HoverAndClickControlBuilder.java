@@ -7,6 +7,8 @@ import org.brixen.pageobject.HoverAndClickControl;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
 /**
  * Defines the contract for a builder of a <b>Selenium</b> page object that models a web control that has meaningful
  * side effects whenever it is clicked and which must be moused over before it is clickable.
@@ -23,6 +25,7 @@ import org.openqa.selenium.interactions.Actions;
  *                     {@code HoverAndClickControlBuilder} builds
  * @param <BuilderT>   the runtime type of this {@code HoverAndClickControlBuilder}
  */
+@ParametersAreNonnullByDefault
 public interface HoverAndClickControlBuilder<
             ControlT extends HoverAndClickControl,
             BeanT extends HoverAndClickControlBean,
