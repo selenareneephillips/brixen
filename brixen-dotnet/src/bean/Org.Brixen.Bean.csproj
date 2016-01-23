@@ -107,6 +107,11 @@
     <Compile Include="IMenuBean.cs" />
     <Compile Include="MenuBean.cs" />
     <Compile Include="IControllableBean.cs" />
+    <Compile Include="ControllableBean.cs" />
+    <Compile Include="IDynamicControllableBean.cs" />
+    <Compile Include="DynamicControllableBean.cs" />
+    <Compile Include="IDropDownMenuBean.cs" />
+    <Compile Include="DropDownMenuBean.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

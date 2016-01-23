@@ -3,6 +3,8 @@ package org.brixen.bean;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
+import org.apache.commons.lang.NullArgumentException;
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -27,10 +29,22 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
     /**
      * {@inheritDoc}
      *
-     * @throws IllegalArgumentException if there is already a {@code ControlBean} for a control with the specified name
+     * @throws NullPointerException if the specified name is {@code null}
+     * @throws IllegalArgumentException if the specified name is empty or all whitespace or if there is already a
+     * {@code ControlBean} for a control with the specified name
      */
     @Override
     public void addClickControl(String name) {
+        //noinspection ConstantConditions
+        if(name == null) {
+            throw new NullPointerException("Cannot add a control with name that is null");
+        }
+
+        if(StringUtils.isBlank(name) ) {
+            throw new IllegalArgumentException("Cannot add a control with a name that is null, empty or all " +
+                    "whitespace");
+        }
+
         if(controlBeans.get(name) != null) {
             throw new IllegalArgumentException("There is already a control named " + name);
         }
@@ -41,10 +55,22 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
     /**
      * {@inheritDoc}
      *
-     * @throws IllegalArgumentException if there is already a {@code ControlBean} for a control with the specified name
+     * @throws NullPointerException if the specified name is {@code null}
+     * @throws IllegalArgumentException if the specified name is empty or all whitespace or if there is already a
+     * {@code ControlBean} for a control with the specified name
      */
     @Override
     public void addHoverControl(String name) {
+        //noinspection ConstantConditions
+        if(name == null) {
+            throw new NullPointerException("Cannot add a control with name that is null");
+        }
+
+        if(StringUtils.isBlank(name) ) {
+            throw new IllegalArgumentException("Cannot add a control with a name that is null, empty or all " +
+                    "whitespace");
+        }
+
         if(controlBeans.get(name) != null) {
             throw new IllegalArgumentException("There is already a control named " + name);
         }
@@ -55,10 +81,22 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
     /**
      * {@inheritDoc}
      *
-     * @throws IllegalArgumentException if there is already a {@code ControlBean} for a control with the specified name
+     * @throws NullPointerException if the specified name is {@code null}
+     * @throws IllegalArgumentException if the specified name is empty or all whitespace or if there is already a
+     * {@code ControlBean} for a control with the specified name
      */
     @Override
     public void addHoverAndClickControl(String name) {
+        //noinspection ConstantConditions
+        if(name == null) {
+            throw new NullPointerException("Cannot add a control with name that is null");
+        }
+
+        if(StringUtils.isBlank(name) ) {
+            throw new IllegalArgumentException("Cannot add a control with a name that is null, empty or all " +
+                    "whitespace");
+        }
+
         if(controlBeans.get(name) != null) {
             throw new IllegalArgumentException("There is already a control named " + name);
         }
@@ -69,10 +107,27 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
     /**
      * {@inheritDoc}
      *
-     * @throws IllegalArgumentException if there is already a {@code ControlBean} for a control with the specified name
+     * @throws NullPointerException if the specified name or state bean are {@code null}
+     * @throws IllegalArgumentException if the specified name is empty or all whitespace or if there is already a
+     * {@code ControlBean} for a control with the specified name
      */
     @Override
     public <BeanT extends ClickControlBean> void addClickControl(String name, BeanT bean) {
+        //noinspection ConstantConditions
+        if(name == null) {
+            throw new NullPointerException("Cannot add a control with name that is null");
+        }
+
+        if(StringUtils.isBlank(name) ) {
+            throw new IllegalArgumentException("Cannot add a control with a name that is null, empty or all " +
+                    "whitespace");
+        }
+
+        //noinspection ConstantConditions
+        if(bean == null) {
+            throw new NullPointerException("Cannot add a control with a null state bean");
+        }
+
         if(controlBeans.get(name) != null) {
             throw new IllegalArgumentException("There is already a control named " + name);
         }
@@ -83,10 +138,27 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
     /**
      * {@inheritDoc}
      *
-     * @throws IllegalArgumentException if there is already a {@code ControlBean} for a control with the specified name
+     * @throws NullPointerException if the specified name or state bean are {@code null}
+     * @throws IllegalArgumentException if the specified name is empty or all whitespace or if there is already a
+     * {@code ControlBean} for a control with the specified name
      */
     @Override
     public <BeanT extends HoverControlBean> void addHoverControl(String name, BeanT bean) {
+        //noinspection ConstantConditions
+        if(name == null) {
+            throw new NullPointerException("Cannot add a control with name that is null");
+        }
+
+        if(StringUtils.isBlank(name) ) {
+            throw new IllegalArgumentException("Cannot add a control with a name that is null, empty or all " +
+                    "whitespace");
+        }
+
+        //noinspection ConstantConditions
+        if(bean == null) {
+            throw new NullPointerException("Cannot add a control with a null state bean");
+        }
+
         if(controlBeans.get(name) != null) {
             throw new IllegalArgumentException("There is already a control named " + name);
         }
@@ -97,10 +169,27 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
     /**
      * {@inheritDoc}
      *
-     * @throws IllegalArgumentException if there is already a {@code ControlBean} for a control with the specified name
+     * @throws NullPointerException if the specified name or state bean are {@code null}
+     * @throws IllegalArgumentException if the specified name is empty or all whitespace or if there is already a
+     * {@code ControlBean} for a control with the specified name
      */
     @Override
     public <BeanT extends HoverAndClickControlBean> void addHoverAndClickControl(String name, BeanT bean) {
+        //noinspection ConstantConditions
+        if(name == null) {
+            throw new NullPointerException("Cannot add a control with name that is null");
+        }
+
+        if(StringUtils.isBlank(name) ) {
+            throw new IllegalArgumentException("Cannot add a control with a name that is null, empty or all " +
+                    "whitespace");
+        }
+
+        //noinspection ConstantConditions
+        if(bean == null) {
+            throw new NullPointerException("Cannot add a control with a null state bean");
+        }
+
         if(controlBeans.get(name) != null) {
             throw new IllegalArgumentException("There is already a control named " + name);
         }

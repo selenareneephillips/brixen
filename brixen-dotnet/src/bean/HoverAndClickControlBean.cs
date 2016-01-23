@@ -5,10 +5,8 @@ using Org.Brixen.PageObject;
 namespace Org.Brixen.Bean {
 	
 	public class HoverAndClickControlBean : ClickControlBean, IHoverAndClickControlBean {
+		private IPolleableBean polleableBean = new PolleableBean();
 		private IWebElement unhoverElement;
-
-		private int pollingTimeout = PolleableConstants.DefaultPollingTimeout;
-		private int pollingInterval = PolleableConstants.DefaultPollingInterval;
 
 		public IWebElement UnhoverElement {
 			get {
@@ -37,31 +35,21 @@ namespace Org.Brixen.Bean {
 
 		public int PollingTimeout {
 			get {
-				return pollingTimeout;
+				return polleableBean.PollingTimeout;
 			}
 
 			set {
-				if(value < 0) {
-					throw new ArgumentOutOfRangeException("value", "Cannot specify a polling timeout less than 0 " + 
-						"seconds");
-				}
-
-				pollingTimeout = value;
+				polleableBean.PollingTimeout = value;
 			}	
 		}
 
 		public int PollingInterval {
 			get {
-				return pollingInterval;
+				return polleableBean.PollingInterval;
 			}
 
 			set {
-				if(value < 0) {
-					throw new ArgumentOutOfRangeException("value", "Cannot specify a polling interval less than 0 " + 
-						"seconds");
-				}
-
-				pollingInterval = value;
+				polleableBean.PollingInterval = value;
 			}	
 		}
 
@@ -106,15 +94,14 @@ namespace Org.Brixen.Bean {
 					UnhoverElement != null ? 
 					UnhoverElement.GetHashCode() : 0;
 
-				return (base.GetHashCode() * 397) 
+				return (base.GetHashCode () * 397)
 					^ unhoverElementHashCode
-					^ HoverWithJavascript.GetHashCode() 
-					^ UnhoverWithJavascript.GetHashCode() 
+					^ HoverWithJavascript.GetHashCode()
+					^ UnhoverWithJavascript.GetHashCode()
 					^ ClickWithJavascriptInsteadOfHover.GetHashCode()
-					^ UnhoverWithClickInstead.GetHashCode() 
+					^ UnhoverWithClickInstead.GetHashCode()
 					^ UnhoverWithJavascriptClickInstead.GetHashCode()
-				    ^ PollingTimeout
-				    ^ PollingInterval;
+					^ polleableBean.GetHashCode();
 			}
 		}
 	}

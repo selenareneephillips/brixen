@@ -9,7 +9,7 @@ namespace Org.Brixen.Bean {
 	/// component that contains web controls that have meaningful side effects whenever they are clicked and/or moused 
 	/// over.
 	/// </summary>
-	public interface IControllableBean {
+	public interface IControllableBean : IContentContainerBean {
 
 		/// <summary>
 		/// Adds an <c>IClickControlBean</c> to specify an <c>IClickControl</c> to add to the page object.
@@ -260,7 +260,9 @@ namespace Org.Brixen.Bean {
 		/// </summary>
 		/// <returns>The collection of <c>IControlBeans</c> that specify the web controls for the page object as a 
 		/// <c>Dictionary</c> where the names of the web controls are the keys.</returns>
-		Dictionary<String,IControlBean> getControlBeans();
+		Dictionary<String,IControlBean> ControlBeans { 
+			get; 
+		}
 	}
 }
 
