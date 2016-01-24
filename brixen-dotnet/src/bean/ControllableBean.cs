@@ -7,7 +7,7 @@ namespace Org.Brixen.Bean {
 
 	public class ControllableBean : ContentContainerBean, IControllableBean {
 
-		private  Dictionary<string,IControlBean> controlBeans = new Dictionary<string,IControlBean>();
+		private Dictionary<string,IControlBean> controlBeans = new Dictionary<string,IControlBean>();
 
 		public void AddClickControl(string name) {
 			if(name == null) {
@@ -185,7 +185,8 @@ namespace Org.Brixen.Bean {
 			}
 
 			if(!bean.IsHoverControl() && !bean.IsHoverAndClickControl()) {
-				throw new InvalidOperationException("The control named " + name + " is not a hover control");
+				throw new InvalidOperationException("The control named " + name + " is not a hover or a hover and " + 
+					"click control");
 			}
 
 			if(bean.IsHoverControl()) {
@@ -270,7 +271,7 @@ namespace Org.Brixen.Bean {
 			}
 
 			if(!bean.IsHoverControl() && !bean.IsHoverAndClickControl()) {
-				throw new InvalidOperationException("The control named " + name + " is not a click or a hover and " + 
+				throw new InvalidOperationException("The control named " + name + " is not a hover or a hover and " + 
 					"click control");
 			}
 
@@ -290,7 +291,7 @@ namespace Org.Brixen.Bean {
 			}
 
 			if(!bean.IsHoverControl() && !bean.IsHoverAndClickControl()) {
-				throw new InvalidOperationException("The control named " + name + " is not a click or a hover and " + 
+				throw new InvalidOperationException("The control named " + name + " is not a hover or a hover and " + 
 					"click control");
 			}
 
@@ -309,7 +310,7 @@ namespace Org.Brixen.Bean {
 			}
 
 			if(!bean.IsHoverControl() && !bean.IsHoverAndClickControl()) {
-				throw new InvalidOperationException("The control named " + name + " is not a click or a hover and " + 
+				throw new InvalidOperationException("The control named " + name + " is not a hover or a hover and " + 
 					"click control");
 			}
 				

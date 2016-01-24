@@ -52,6 +52,7 @@
     <Compile Include="ClickControlBeanTest.cs" />
     <Compile Include="HoverAndClickControlBeanTest.cs" />
     <Compile Include="MenuBeanTest.cs" />
+    <Compile Include="ControllableBeanTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\bean\Org.Brixen.Bean.csproj">

@@ -321,7 +321,6 @@ namespace Org.Brixen.Bean.Tests {
 				"equal if they both have null container element references and two non-empty option elements list " + 
 				"references containing the same object");
 		}	
-			
 	}
 }
 
