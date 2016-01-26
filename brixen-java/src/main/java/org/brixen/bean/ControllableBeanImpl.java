@@ -41,8 +41,7 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
         }
 
         if(StringUtils.isBlank(name) ) {
-            throw new IllegalArgumentException("Cannot add a control with a name that is null, empty or all " +
-                    "whitespace");
+            throw new IllegalArgumentException("Cannot add a control with a name that is empty or all whitespace");
         }
 
         if(controlBeans.get(name) != null) {
@@ -67,8 +66,7 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
         }
 
         if(StringUtils.isBlank(name) ) {
-            throw new IllegalArgumentException("Cannot add a control with a name that is null, empty or all " +
-                    "whitespace");
+            throw new IllegalArgumentException("Cannot add a control with a name that is empty or all whitespace");
         }
 
         if(controlBeans.get(name) != null) {
@@ -93,8 +91,7 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
         }
 
         if(StringUtils.isBlank(name) ) {
-            throw new IllegalArgumentException("Cannot add a control with a name that is null, empty or all " +
-                    "whitespace");
+            throw new IllegalArgumentException("Cannot add a control with a name that is empty or all whitespace");
         }
 
         if(controlBeans.get(name) != null) {
@@ -119,8 +116,7 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
         }
 
         if(StringUtils.isBlank(name) ) {
-            throw new IllegalArgumentException("Cannot add a control with a name that is null, empty or all " +
-                    "whitespace");
+            throw new IllegalArgumentException("Cannot add a control with a name that is empty or all whitespace");
         }
 
         //noinspection ConstantConditions
@@ -150,8 +146,7 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
         }
 
         if(StringUtils.isBlank(name) ) {
-            throw new IllegalArgumentException("Cannot add a control with a name that is null, empty or all " +
-                    "whitespace");
+            throw new IllegalArgumentException("Cannot add a control with a name that is empty or all whitespace");
         }
 
         //noinspection ConstantConditions
@@ -181,8 +176,7 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
         }
 
         if(StringUtils.isBlank(name) ) {
-            throw new IllegalArgumentException("Cannot add a control with a name that is null, empty or all " +
-                    "whitespace");
+            throw new IllegalArgumentException("Cannot add a control with a name that is empty or all whitespace");
         }
 
         //noinspection ConstantConditions
@@ -302,7 +296,8 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
         }
 
         if(!bean.isHoverControl() && !bean.isHoverAndClickControl()) {
-            throw new IllegalStateException("The control named " + name + " is not a hover control");
+            throw new IllegalStateException("The control named " + name + " is not a hover or a hover and click " +
+                    "control");
         }
 
         if(bean.isHoverControl()) {
@@ -328,7 +323,7 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
         }
 
         if(!bean.isHoverControl() && !bean.isHoverAndClickControl()) {
-            throw new IllegalArgumentException("The control named " + name + " is not a hover or a hover and click " +
+            throw new IllegalStateException("The control named " + name + " is not a hover or a hover and click " +
                     "control");
         }
 
@@ -355,7 +350,7 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
         }
 
         if(!bean.isHoverControl() && !bean.isHoverAndClickControl()) {
-            throw new IllegalArgumentException("The control named " + name + " is not a hover or a hover and click " +
+            throw new IllegalStateException("The control named " + name + " is not a hover or a hover and click " +
                     "control");
         }
 
@@ -382,7 +377,7 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
         }
 
         if(!bean.isClickControl() && !bean.isHoverAndClickControl()) {
-            throw new IllegalStateException("The control named " + name + " is not a click or a hover and click " +
+            throw new IllegalStateException("The control named " + name + " is not a hover or a hover and click " +
                     "control");
         }
 
@@ -404,7 +399,7 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
         }
 
         if(!bean.isHoverControl()) {
-            throw new IllegalArgumentException("The control named " + name + " is not a hover control");
+            throw new IllegalStateException("The control named " + name + " is not a hover control");
         }
 
         ((HoverControlBean)bean).setClickInsteadOfHover(clickInsteadOfHover);
@@ -426,7 +421,7 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
         }
 
         if(!bean.isHoverControl() && !bean.isHoverAndClickControl()) {
-            throw new IllegalStateException("The control named " + name + " is not a click or a hover and click " +
+            throw new IllegalStateException("The control named " + name + " is not a hover or a hover and click " +
                     "control");
         }
 
@@ -454,7 +449,7 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
         }
 
         if(!bean.isHoverControl() && !bean.isHoverAndClickControl()) {
-            throw new IllegalStateException("The control named " + name + " is not a click or a hover and click " +
+            throw new IllegalStateException("The control named " + name + " is not a hover or a hover and click " +
                     "control");
         }
 
@@ -482,7 +477,7 @@ public class ControllableBeanImpl extends ContentContainerBeanImpl implements Co
         }
 
         if(!bean.isHoverControl() && !bean.isHoverAndClickControl()) {
-            throw new IllegalStateException("The control named " + name + " is not a click or a hover and click " +
+            throw new IllegalStateException("The control named " + name + " is not a hover or a hover and click " +
                     "control");
         }
 

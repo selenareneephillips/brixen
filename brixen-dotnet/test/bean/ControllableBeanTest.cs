@@ -523,7 +523,7 @@ namespace Org.Brixen.Bean.Tests
 			"polleable control", MatchType=MessageMatch.Regex)]
 		public void ShouldThrowExceptionForAddingPollingTimeoutToClickControl() {
 			IControllableBean bean = new ControllableBean();
-			bean.AddClickControl ("name");
+			bean.AddClickControl("name");
 			bean.SetControlPollingTimeout("name", 50);
 		}
 
@@ -535,7 +535,7 @@ namespace Org.Brixen.Bean.Tests
 			"polleable control", MatchType=MessageMatch.Regex)]
 		public void ShouldThrowExceptionForAddingPollingIntervalToClickControl() {
 			IControllableBean bean = new ControllableBean();
-			bean.AddClickControl ("name");
+			bean.AddClickControl("name");
 			bean.SetControlPollingInterval("name", 50);
 		}
 
@@ -547,7 +547,7 @@ namespace Org.Brixen.Bean.Tests
 			"polleable control", MatchType=MessageMatch.Regex)]
 		public void ShouldThrowExceptionForAddingPollingTimeoutToHoverControl() {
 			IControllableBean bean = new ControllableBean();
-			bean.AddHoverControl ("name");
+			bean.AddHoverControl("name");
 			bean.SetControlPollingTimeout("name", 50);
 		}
 
@@ -559,7 +559,7 @@ namespace Org.Brixen.Bean.Tests
 			"polleable control", MatchType=MessageMatch.Regex)]
 		public void ShouldThrowExceptionForAddingPollingIntervalToHoverControl() {
 			IControllableBean bean = new ControllableBean();
-			bean.AddHoverControl ("name");
+			bean.AddHoverControl("name");
 			bean.SetControlPollingInterval("name", 50);
 		}
 
@@ -963,7 +963,7 @@ namespace Org.Brixen.Bean.Tests
 			beanTwo.ContentContainer = mockContainerElementOne.Object;
 
 			IHoverControlBean hoverControlBeanOne = new HoverControlBean();
-			IHoverControlBean hoverControlBeanTwo = new HoverControlBean ();
+			IHoverControlBean hoverControlBeanTwo = new HoverControlBean();
 
 			hoverControlBeanOne.ContentContainer = mockContainerElementTwo.Object;
 			hoverControlBeanTwo.ContentContainer = mockContainerElementTwo.Object;
@@ -1269,7 +1269,7 @@ namespace Org.Brixen.Bean.Tests
 			beanTwo.ContentContainer = mockContainerElementOne.Object;
 
 			IHoverControlBean hoverControlBeanOne = new HoverControlBean();
-			IHoverControlBean hoverControlBeanTwo = new HoverControlBean ();
+			IHoverControlBean hoverControlBeanTwo = new HoverControlBean();
 
 			hoverControlBeanOne.ContentContainer = mockContainerElementTwo.Object;
 			hoverControlBeanTwo.ContentContainer = mockContainerElementTwo.Object;
