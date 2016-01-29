@@ -955,7 +955,7 @@ public class ControllableBeanTest {
     @Test(groups = {"HashCodeCallsSuperTestGroup", "BeanHashCodeCallsSuperTestGroup", 
             "ControllableBeanHashCodeEqualityNegativeTestGroup"}
     )
-    public void HashCodesShouldNotBeEqual() {
+    public void hashCodesShouldNotBeEqual() {
 
         ControllableBean beanOne = new ControllableBeanImpl();
         ControllableBean beanTwo = new ControllableBeanImpl();
@@ -1056,7 +1056,7 @@ public class ControllableBeanTest {
     @Test(groups = {"HashCodeCallsSuperTestGroup", "BeanHashCodeCallsSuperTestGroup", 
             "ControllableBeanHashCodeEqualityPositiveTestGroup"}
     )
-    public void HashCodesShouldBeEqual() {
+    public void hashCodesShouldBeEqual() {
         ControllableBean beanOne = new ControllableBeanImpl();
         ControllableBean beanTwo = new ControllableBeanImpl();
 
