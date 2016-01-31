@@ -2,57 +2,46 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using Moq;
+using Org.Brixen.Bean;
 
-namespace Org.Brixen.Bean.Tests
-{
+namespace Org.Brixen.Tests.Bean {
+
 	[TestFixture]
-	[Category("HoverAndClickControlBeanTestGroup")]
-	public class HoverAndClickControlBeanTest {
-		
+	[Category("HoverControlBeanTestGroup")]
+	public class HoverControlBeanTest {
+
 		[Test]
 		[Category("ExpectedExceptionsTestGroup")]
 		[Category("BeanExpectedExceptionsTestGroup")]
-		[Category("HoverAndClickControlBeanExpectedExceptionsTestGroup")]
+		[Category("HoverControlBeanExpectedExceptionsTestGroup")]
 		[ExpectedException("System.ArgumentNullException", ExpectedMessage = "Cannot invoke setter for " + 
 			"UnhoverElement property with a null parameter", MatchType=MessageMatch.Regex)]
 		public void ShouldThrowExceptionForNullUnhoverElement() {
-			IHoverAndClickControlBean bean = new HoverAndClickControlBean();
+			IHoverControlBean bean = new HoverControlBean();
 			bean.UnhoverElement = null;
-		}
-
-		[Test]
-		[Category("ExpectedExceptionsTestGroup")]
-		[Category("BeanExpectedExceptionsTestGroup")]
-		[Category("HoverAndClickControlBeanExpectedExceptionsTestGroup")]
-		[ExpectedException("System.ArgumentOutOfRangeException", ExpectedMessage="Cannot specify a polling timeout " + 
-			"less than 0 seconds", MatchType=MessageMatch.Regex )]
-		public void ShouldThrowExceptionForNegativePollingTimeout() {
-			IHoverAndClickControlBean bean = new HoverAndClickControlBean();
-			bean.PollingTimeout = -1;
-		}
-
-		[Test]
-		[Category("ExpectedExceptionsTestGroup")]
-		[Category("BeanExpectedExceptionsTestGroup")]
-		[Category("HoverAndClickControlBeanExpectedExceptionsTestGroup")]
-		[ExpectedException("System.ArgumentOutOfRangeException", ExpectedMessage="Cannot specify a polling interval " + 
-			"less than 0 seconds", MatchType=MessageMatch.Regex )]
-		public void ShouldThrowExceptionForNegativePollingInterval() {
-			IHoverAndClickControlBean bean = new HoverAndClickControlBean();
-			bean.PollingInterval = -1;
 		}
 
 		[Test]
 		[Category("EqualityNegativeTestGroup")]
 		[Category("BeanEqualityNegativeTestGroup")]
-		[Category("HoverAndClickControlBeanEqualityNegativeTestGroup")]
+		[Category("HoverControlBeanEqualityNegativeTestGroup")]
 		public void ShouldNotBeEqual() {
-			IHoverAndClickControlBean beanOne = new HoverAndClickControlBean();
-			IHoverAndClickControlBean beanTwo = new HoverAndClickControlBean();
-		
+			IHoverControlBean beanOne = new HoverControlBean();
+			IHoverControlBean beanTwo = new HoverControlBean();
+
+			Mock<IWebElement> mockContainerElementOne = new Mock<IWebElement>();
+			Mock<IWebElement> mockContainerElementTwo = new Mock<IWebElement>();
+
+			beanOne.ContentContainer = mockContainerElementOne.Object;
+			beanTwo.ContentContainer = mockContainerElementTwo.Object;
+
+			Assert.AreNotEqual(beanOne, beanTwo, "Beans with different container element references should not be " + 
+				"equal");
+
 			Mock<IWebElement> mockUnhoverElementOne = new Mock<IWebElement>();
 			Mock<IWebElement> mockUnhoverElementTwo = new Mock<IWebElement>();
 
+			beanTwo.ContentContainer = mockContainerElementOne.Object;
 			beanOne.UnhoverElement= mockUnhoverElementOne.Object;
 
 			Assert.AreNotEqual(beanOne, beanTwo, "Beans with different unhover element references should not be equal");
@@ -74,7 +63,12 @@ namespace Org.Brixen.Bean.Tests
 				"not be equal");
 
 			beanTwo.UnhoverWithJavascript = true;
+			beanOne.ClickInsteadOfHover = true;
 
+			Assert.AreNotEqual(beanOne, beanTwo, "Beans with different click action hover workaround values should " + 
+				"not be equal");
+
+			beanTwo.ClickInsteadOfHover = true;
 			beanOne.ClickWithJavascriptInsteadOfHover = true;
 
 			Assert.AreNotEqual(beanOne, beanTwo, "Beans with different JavaScript click action hover workaround " + 
@@ -91,34 +85,27 @@ namespace Org.Brixen.Bean.Tests
 
 			Assert.AreNotEqual(beanOne, beanTwo, "Beans with different JavaScript click action unhover workaround " + 
 				"values should not be equal");
-
-			beanTwo.UnhoverWithJavascriptClickInstead = true;
-			beanOne.LoadTimeout = 40;
-
-			Assert.AreNotEqual(beanOne, beanTwo, "Beans with different load timeouts should not be equal");
-
-			beanOne.LoadTimeout = 30;
-			beanTwo.PollingTimeout = 40;
-
-			Assert.AreNotEqual(beanOne, beanTwo, "Beans with different polling timeouts should not be equal");
-
-			beanTwo.PollingTimeout = 30;
-			beanTwo.PollingInterval = 5;
-
-			Assert.AreNotEqual(beanOne, beanTwo, "Beans with different polling intervals should not be equal");
 		}
 
 		[Test]
 		[Category("EqualityPositiveTestGroup")]
 		[Category("BeanEqualityPositiveTestGroup")]
-		[Category("HoverAndClickControlBeanEqualityPositiveTestGroup")]
+		[Category("HoverControlBeanEqualityPositiveTestGroup")]
 		public void ShouldBeEqual() {
-			IHoverAndClickControlBean beanOne = new HoverAndClickControlBean();
-			IHoverAndClickControlBean beanTwo = new HoverAndClickControlBean();
+			IHoverControlBean beanOne = new HoverControlBean();
+			IHoverControlBean beanTwo = new HoverControlBean();
 
 			Assert.AreEqual(beanOne, beanTwo, "Two newly constructed beans should be equal before any setters are " + 
 				"invoked");
 
+			Mock<IWebElement> mockContainerElement = new Mock<IWebElement>();
+
+			beanOne.ContentContainer = mockContainerElement.Object;
+			beanTwo.ContentContainer = mockContainerElement.Object;
+
+			Assert.AreEqual(beanOne, beanTwo, "Two beans should be equal if they have the same container element " + 
+				"reference and same default JavaScript click workaround value");
+			
 			Mock<IWebElement> mockUnhoverElement = new Mock<IWebElement>();
 
 			beanOne.UnhoverElement = mockUnhoverElement.Object;
@@ -143,6 +130,14 @@ namespace Org.Brixen.Bean.Tests
 
 			beanOne.UnhoverWithJavascript = false;
 			beanTwo.UnhoverWithJavascript = false;
+			beanOne.ClickInsteadOfHover = true;
+			beanTwo.ClickInsteadOfHover = true;
+
+			Assert.AreEqual(beanOne, beanTwo, "Two beans should be equal if they have the same container and unhover " + 
+				"element references and same non-default click action hover workaround value");
+
+			beanOne.ClickInsteadOfHover = false;
+			beanTwo.ClickInsteadOfHover = false;
 			beanOne.ClickWithJavascriptInsteadOfHover = true;
 			beanTwo.ClickWithJavascriptInsteadOfHover = true;
 
@@ -172,99 +167,87 @@ namespace Org.Brixen.Bean.Tests
 
 			Assert.AreEqual(beanOne, beanTwo, "Two beans should be equal if they have the same container and unhover " + 
 				"element references and same non-default JavaScript click action unhover workaround value");
-
-			beanOne.UnhoverWithJavascriptClickInstead = false;
-			beanTwo.UnhoverWithJavascriptClickInstead = false;
-			beanOne.PollingTimeout = 40;
-			beanTwo.PollingTimeout = 40;
-			beanOne.PollingInterval = 5;
-			beanTwo.PollingInterval = 5;
-
-			Assert.AreEqual(beanOne, beanTwo, "Two beans should be equal if they have the same container and unhover " + 
-				"element references and and the same non-default polling timeout and polling interval");
 			
-			beanOne = new HoverAndClickControlBean();
-			beanTwo = new HoverAndClickControlBean();
+			beanOne = new HoverControlBean();
+			beanTwo = new HoverControlBean();
 
 			beanOne.HoverWithJavascript = true;
 			beanTwo.HoverWithJavascript = true;
 			beanOne.UnhoverWithJavascript = true;
 			beanTwo.UnhoverWithJavascript = true;
+			beanOne.ClickInsteadOfHover = true;
+			beanTwo.ClickInsteadOfHover = true;
 			beanOne.ClickWithJavascriptInsteadOfHover = true;
 			beanTwo.ClickWithJavascriptInsteadOfHover = true;
 			beanOne.UnhoverWithClickInstead = true;
 			beanTwo.UnhoverWithClickInstead = true;
 			beanOne.UnhoverWithJavascriptClickInstead = true;
 			beanTwo.UnhoverWithJavascriptClickInstead = true;
-			beanOne.PollingTimeout = 40;
-			beanTwo.PollingTimeout = 40;
-			beanOne.PollingInterval = 5;
-			beanTwo.PollingInterval = 5;
 
 			Assert.AreEqual(beanOne, beanTwo, "Two beans should be equal if they have null container and unhover " + 
-				"element references, the same non-default JavaScript hover workaround values and the same " + 
-				"non-default polling timeout and polling interval");
+				"element references and same non-default JavaScript hover workaround values");
 		}
 
 		[Test]
 		[Category("ToStringCallsBaseTestGroup")]
 		[Category("BeanToStringCallsBaseTestGroup")]
-		[Category("HoverAndClickControlBeanToStringCallsBaseTestGroup")]
+		[Category("HoverControlBeanToStringCallsBaseTestGroup")]
 		public void ShouldCallBaseForToString() {
 			Mock<IWebElement> mockElement = new Mock<IWebElement>();
 
-			IHoverAndClickControlBean bean = new HoverAndClickControlBean();
+			IHoverControlBean bean = new HoverControlBean();
 			bean.ContentContainer = mockElement.Object;
 
-			Assert.AreEqual("HoverAndClickControlBean(ClickControlBean(ContentContainerBean(LoadableBean(Driver: " + 
-				"null, LoadTimeout: 30), ContentContainer: " + mockElement.Object.ToString() + "), " + 
-				"ClickWithJavascript: False), UnhoverElement: null, HoverWithJavascript: False, " + 
-				"UnhoverWithJavascript: False, ClickWithJavascriptInsteadOfHover: False, UnhoverWithClickInstead: " + 
-				"False, UnhoverWithJavascriptClickInstead: False, PollingTimeout: 30, PollingInterval: 1)", 
-				bean.ToString());
+			Assert.AreEqual("HoverControlBean(ContentContainerBean(LoadableBean(Driver: null, LoadTimeout: 30), " + 
+				"ContentContainer: " + mockElement.Object.ToString() + "), UnhoverElement: null, " + 
+				"HoverWithJavascript: False, UnhoverWithJavascript: False, ClickInsteadOfHover: False, " + 
+				"ClickWithJavascriptInsteadOfHover: False, UnhoverWithClickInstead: False, " + 
+				"UnhoverWithJavascriptClickInstead: False)", bean.ToString());
 		}
 
 		[Test]
 		[Category("HashCodeCallsSuperTestGroup")]
 		[Category("BeanHashCodeCallsSuperTestGroup")]
-		[Category("HoverAndClickControlBeanHashCodeCallsSuperTestGroup")]
+		[Category("HoverControlBeanHashCodeCallsSuperTestGroup")]
 		public void ShouldCallBaseForHashCode() {
-			IHoverAndClickControlBean bean = new HoverAndClickControlBean();
-			IHoverAndClickControlBean beanToCompare = new HoverAndClickControlBean();
+			IHoverControlBean bean = new HoverControlBean();
+			IHoverControlBean beanToCompare = new HoverControlBean();
 
 			Assert.AreEqual(bean.GetHashCode(), beanToCompare.GetHashCode(), "Hash codes for bean which have not had " + 
 				"setters called should be equal, but are not: " + bean.ToString() + ", " + beanToCompare.ToString());
 
-			bean.ClickWithJavascript = true;
+			Mock<IWebElement> mockElement = new Mock<IWebElement>();
+
+			bean.ContentContainer = mockElement.Object;
 			Assert.AreNotEqual(bean.GetHashCode(), beanToCompare.GetHashCode(), "Hash codes for bean which have " + 
-				"different values for their Javascript click workaround fields should not be equal, but are: " + 
+				"different values for their container element fields should not be equal, but are: " + 
 				bean.ToString() + ", " + beanToCompare.ToString());
 
-			beanToCompare.ClickWithJavascript = true;
+			beanToCompare.ContentContainer = mockElement.Object;
 			Assert.AreEqual(bean.GetHashCode(), beanToCompare.GetHashCode(), "Hash codes for bean which have the " + 
-				"same Javascript click workaround value should be equal, but are not: " + bean.ToString() + ", " + 
+				"same container element should be equal, but are not: " + bean.ToString() + ", " + 
 				beanToCompare.ToString());
 		}
-			
+
 		[Test]
 		[Category("ControlBeanExtensionMethodsTestGroup")]
-		public void ShouldReturnFalseForIsHoverControl() {
-			IHoverAndClickControlBean bean = new HoverAndClickControlBean();
-			Assert.IsFalse(bean.IsHoverControl());
+		public void ShouldReturnTrueForIsHoverControl() {
+			IHoverControlBean bean = new HoverControlBean();
+			Assert.IsTrue(bean.IsHoverControl());
 		}	
 
 		[Test]
 		[Category("ControlBeanExtensionMethodsTestGroup")]
-		public void ShouldReturnTrueForIsClickControl() {
-			IHoverAndClickControlBean bean = new HoverAndClickControlBean();
-			Assert.IsTrue(bean.IsClickControl());
+		public void ShouldReturnFalseForIsClickControl() {
+			IHoverControlBean bean = new HoverControlBean();
+			Assert.IsFalse(bean.IsClickControl());
 		}
 
 		[Test]
 		[Category("ControlBeanExtensionMethodsTestGroup")]
-		public void ShouldReturnTrueForIsHoverAndClickControl() {
-			IHoverAndClickControlBean bean = new HoverAndClickControlBean();
-			Assert.IsTrue(bean.IsHoverAndClickControl());
+		public void ShouldReturnFalseForIsHoverAndClickControl() {
+			IHoverControlBean bean = new HoverControlBean();
+			Assert.IsFalse(bean.IsHoverAndClickControl());
 		}
 	}
 }

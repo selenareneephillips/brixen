@@ -5,8 +5,8 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 using Org.Brixen.Bean;
 
-namespace Org.Brixen.Bean.Tests
-{
+namespace Org.Brixen.Tests.Bean {
+
 	[TestFixture]
 	[Category("LoadableBeanTestGroup")]
 	public class LoadableBeanTest {

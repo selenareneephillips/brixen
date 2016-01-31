@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2CABB9BA-7612-4FFA-8421-316AAEF777C9}</ProjectGuid>
+    <ProjectGuid>{9350E675-BAA7-4440-AC58-A62A0807714C}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Org.Brixen.Bean.Tests</RootNamespace>
-    <AssemblyName>Org.Brixen.Bean.Tests</AssemblyName>
+    <RootNamespace>Org.Brixen.Tests.Bean</RootNamespace>
+    <AssemblyName>Org.Brixen.Tests.Bean</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -29,37 +29,37 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="Moq">
-      <HintPath>..\..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
-    </Reference>
     <Reference Include="WebDriver">
       <HintPath>..\..\..\..\..\..\selenium-dotnet-2.48.0\net40\WebDriver.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>bin\Debug\nunit.framework.dll</HintPath>
+      <HintPath>..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\..\packages\Moq.4.2.1510.2205\lib\net40\Moq.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="LoadableBeanTest.cs" />
-    <Compile Include="PolleableBeanTest.cs" />
-    <Compile Include="ContentContainerBeanTest.cs" />
     <Compile Include="ClickableBeanTest.cs" />
-    <Compile Include="HoverControlBeanTest.cs" />
     <Compile Include="ClickControlBeanTest.cs" />
-    <Compile Include="HoverAndClickControlBeanTest.cs" />
-    <Compile Include="MenuBeanTest.cs" />
+    <Compile Include="ContentContainerBeanTest.cs" />
     <Compile Include="ControllableBeanTest.cs" />
-    <Compile Include="DynamicControllableBeanTest.cs" />
     <Compile Include="DropDownMenuTest.cs" />
+    <Compile Include="DynamicControllableBeanTest.cs" />
+    <Compile Include="HoverAndClickControlBeanTest.cs" />
+    <Compile Include="HoverControlBeanTest.cs" />
+    <Compile Include="LoadableBeanTest.cs" />
+    <Compile Include="MenuBeanTest.cs" />
+    <Compile Include="PolleableBeanTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\bean\Org.Brixen.Bean.csproj">
       <Project>{C8D1B60B-D62D-4CBA-8B2F-63323829408A}</Project>
       <Name>Org.Brixen.Bean</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

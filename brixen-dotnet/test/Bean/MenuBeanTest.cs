@@ -3,8 +3,9 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using Moq;
 using System.Collections.Generic;
+using Org.Brixen.Bean;
 
-namespace Org.Brixen.Bean.Tests {
+namespace Org.Brixen.Tests.Bean {
 
 	[TestFixture]
 	[Category("MenuBeanTestGroup")]

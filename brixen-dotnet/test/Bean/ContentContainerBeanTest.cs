@@ -1,76 +1,71 @@
 ﻿using System;
 using NUnit.Framework;
-using Moq;
+using Org.Brixen.Bean;
 using OpenQA.Selenium;
+using Moq;
+using Org.Brixen.Bean;
 
-namespace Org.Brixen.Bean.Tests
-{
+namespace Org.Brixen.Tests.Bean {
+
 	[TestFixture]
-	[Category("PolleableBeanTestGroup")]
-	public class PolleableBeanTest {
-		
-		[Test]
-		[Category("ExpectedExceptionsTestGroup")]
-		[Category("BeanExpectedExceptionsTestGroup")]
-		[Category("PolleableBeanExpectedExceptionsTestGroup")]
-		[ExpectedException("System.ArgumentOutOfRangeException", ExpectedMessage="Cannot specify a polling timeout " + 
-			"less than 0 seconds", MatchType=MessageMatch.Regex )]
-		public void ShouldThrowExceptionForNegativePollingTimeout() {
-			IPolleableBean bean = new PolleableBean();
-			bean.PollingTimeout = -1;
-		}
+	[Category("ContentContainerBeanTestGroup")]
+	public class ContentContainerBeanTest {
 
 		[Test]
 		[Category("ExpectedExceptionsTestGroup")]
 		[Category("BeanExpectedExceptionsTestGroup")]
-		[Category("PolleableBeanExpectedExceptionsTestGroup")]
-		[ExpectedException("System.ArgumentOutOfRangeException", ExpectedMessage="Cannot specify a polling interval " + 
-			"less than 0 seconds", MatchType=MessageMatch.Regex )]
-		public void ShouldThrowExceptionForNegativePollingInterval() {
-			IPolleableBean bean = new PolleableBean();
-			bean.PollingInterval = -1;
+		[Category("ContentContainerBeanExpectedExceptionsTestGroup")]
+		[ExpectedException("System.ArgumentNullException", ExpectedMessage = "Cannot invoke setter for " + 
+			"ContentContainer property with a null parameter", MatchType=MessageMatch.Regex)]
+		public void ShouldThrowExceptionForNullContainerElement() {
+			IContentContainerBean bean = new ContentContainerBean();
+			bean.ContentContainer = null;
 		}
 
 		[Test]
 		[Category("EqualityNegativeTestGroup")]
 		[Category("BeanEqualityNegativeTestGroup")]
-		[Category("PolleableBeanEqualityNegativeTestGroup")]
+		[Category("ContentContainerBeanEqualityNegativeTestGroup")]
 		public void ShouldNotBeEqual() {
 			Mock<IWebDriver> mockDriverOne = new Mock<IWebDriver>();
 			Mock<IWebDriver> mockDriverTwo = new Mock<IWebDriver>();
 
-			IPolleableBean beanOne = new PolleableBean();
-			IPolleableBean beanTwo = new PolleableBean();
+			IContentContainerBean beanOne = new ContentContainerBean();
+			IContentContainerBean  beanTwo = new ContentContainerBean();
 
 			beanOne.Driver = mockDriverOne.Object;
 			beanTwo.Driver = mockDriverTwo.Object;
 
 			Assert.AreNotEqual(beanOne, beanTwo, "Beans with different driver references should not be equal");
 
-			beanOne = new PolleableBean();
-			beanTwo = new PolleableBean();
+			beanOne = new ContentContainerBean();
+			beanTwo = new ContentContainerBean();
 			beanOne.LoadTimeout = 40;
 
 			Assert.AreNotEqual(beanOne, beanTwo, "Beans with different load timeouts should not be equal");
 
+			Mock<IWebElement> mockContainerElementOne = new Mock<IWebElement>();
+			Mock<IWebElement> mockContainerElementTwo = new Mock<IWebElement>();
+
 			beanOne.LoadTimeout = 30;
-			beanTwo.PollingTimeout = 40;
+			beanOne.ContentContainer = mockContainerElementOne.Object;
 
-			Assert.AreNotEqual(beanOne, beanTwo, "Beans with different polling timeouts should not be equal");
+			Assert.AreNotEqual(beanOne, beanTwo, "Beans with different content container element values should not " + 
+				"be equal");
 
-			beanTwo.PollingTimeout = 30;
-			beanTwo.PollingInterval = 5;
+			beanTwo.ContentContainer = mockContainerElementTwo.Object;
 
-			Assert.AreNotEqual(beanOne, beanTwo, "Beans with different polling intervals should not be equal");
+			Assert.AreNotEqual(beanOne, beanTwo, "Beans with different content container element values should not " + 
+				"be equal");
 		}
 
 		[Test]
 		[Category("EqualityPositiveTestGroup")]
 		[Category("BeanEqualityPositiveTestGroup")]
-		[Category("PolleableBeanEqualityPositiveTestGroup")]
+		[Category("ContentContainerBeanEqualityPositiveTestGroup")]
 		public void ShouldBeEqual() {
-			IPolleableBean beanOne = new PolleableBean();
-			IPolleableBean beanTwo = new PolleableBean();
+			IContentContainerBean beanOne = new ContentContainerBean();
+			IContentContainerBean beanTwo = new ContentContainerBean();
 
 			Assert.AreEqual(beanOne, beanTwo, "Two newly constructed beans should be equal before any setters are " + 
 				"invoked");
@@ -83,47 +78,45 @@ namespace Org.Brixen.Bean.Tests
 			Assert.AreEqual(beanOne, beanTwo, "Two beans should be equal if they have the same web driver reference " +
 				"and the default load timeout");
 
-			beanOne.PollingTimeout = 40;
-			beanTwo.PollingTimeout = 40;
-			beanOne.PollingInterval = 5;
-			beanTwo.PollingInterval = 5;
+			Mock<IWebElement> mockContainerElement = new Mock<IWebElement>();
 
-			Assert.AreEqual(beanOne, beanTwo, "Two beans should be equal if they have the same web driver reference " +
-				"and the same non-default polling timeout and polling interval");
+			beanOne.ContentContainer = mockContainerElement.Object;
+			beanTwo.ContentContainer = mockContainerElement.Object;
 
-			beanOne = new PolleableBean();
-			beanTwo = new PolleableBean();
+			Assert.AreEqual(beanOne, beanTwo, "Two beans should be equal if they have the same web driver and " + 
+				"content container references");
 
-			beanOne.PollingTimeout = 40;
-			beanTwo.PollingTimeout = 40;
-			beanOne.PollingInterval = 5;
-			beanTwo.PollingInterval = 5;
+			beanOne = new ContentContainerBean();
+			beanTwo = new ContentContainerBean();
 
-			Assert.AreEqual(beanOne, beanTwo, "Two beans should be equal if they have null web driver reference " +
-				"and the same non-default polling timeout and polling interval");
+			beanOne.ContentContainer = mockContainerElement.Object;
+			beanTwo.ContentContainer = mockContainerElement.Object;
+
+			Assert.AreEqual(beanOne, beanTwo, "Two beans should be equal if they have null web driver references " +
+				"and the same content container reference");
 		}
 
 		[Test]
 		[Category("ToStringCallsBaseTestGroup")]
 		[Category("BeanToStringCallsBaseTestGroup")]
-		[Category("PolleableBeanToStringCallsBaseTestGroup")]
+		[Category("ContentContainerBeanToStringCallsBaseTestGroup")]
 		public void ShouldCallBaseForToString() {
 			Mock<IWebDriver> mockDriver = new Mock<IWebDriver>();
 
-			IPolleableBean bean = new PolleableBean();
+			IContentContainerBean bean = new ContentContainerBean();
 			bean.Driver = mockDriver.Object;
 
-			Assert.AreEqual("PolleableBean(LoadableBean(Driver: " + mockDriver.Object.ToString() + 
-				", LoadTimeout: 30), " + "PollingTimeout: 30, PollingInterval: 1)", bean.ToString());
+			Assert.AreEqual("ContentContainerBean(LoadableBean(Driver: " + mockDriver.Object.ToString() + 
+				", LoadTimeout: 30), ContentContainer: null)", bean.ToString());
 		}
 
 		[Test]
 		[Category("HashCodeCallsSuperTestGroup")]
 		[Category("BeanHashCodeCallsSuperTestGroup")]
-		[Category("PolleableBeanHashCodeCallsSuperTestGroup")]
+		[Category("ContentContainerBeanHashCodeCallsSuperTestGroup")]
 		public void ShouldCallBaseForHashCode() {
-			IPolleableBean bean = new PolleableBean();
-			IPolleableBean beanToCompare = new PolleableBean();
+			IContentContainerBean bean = new ContentContainerBean();
+			IContentContainerBean beanToCompare = new ContentContainerBean();
 
 			Assert.AreEqual(bean.GetHashCode(), beanToCompare.GetHashCode(), "Hash codes for bean which have not had " + 
 				"setters called should be equal, but are not: " + bean.ToString() + ", " + beanToCompare.ToString());
@@ -148,7 +141,7 @@ namespace Org.Brixen.Bean.Tests
 			Assert.AreEqual(bean.GetHashCode(), beanToCompare.GetHashCode(), "Hash codes for bean which have the " + 
 				"same driver and load timeout should be equal, but are not: " + bean.ToString() + ", " + 
 				beanToCompare.ToString());
-		}	
+		}
 	}
 }
 

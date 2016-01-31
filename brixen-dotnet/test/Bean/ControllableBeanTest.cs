@@ -3,9 +3,10 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using System.Collections.Generic;
 using Moq;
+using Org.Brixen.Bean;
 
-namespace Org.Brixen.Bean.Tests
-{
+namespace Org.Brixen.Tests.Bean {
+	
 	[TestFixture]
 	[Category("ControllableBeanTestGroup")]
 	public class ControllableBeanTest {

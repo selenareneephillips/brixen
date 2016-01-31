@@ -115,12 +115,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\pageobject\Org.Brixen.PageObject.csproj">
       <Project>{B2F7A0E7-AF7B-48A9-AE7F-28B947661E8F}</Project>
       <Name>Org.Brixen.PageObject</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
 </Project>

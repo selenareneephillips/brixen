@@ -3,10 +3,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{784D4838-E087-4546-A24A-15D0C27C2BB1}</ProjectGuid>
+    <ProjectGuid>{7F452025-0AA7-4A48-B7F5-C40489C4E4A7}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Org.Brixen.Decorator.Bean.Tests</RootNamespace>
-    <AssemblyName>Org.Brixen.Decorator.Bean.Tests</AssemblyName>
+    <RootNamespace>Org.Brixen.Config</RootNamespace>
+    <AssemblyName>Org.Brixen.Config</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -29,21 +29,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="nunit.framework">
-      <HintPath>..\..\..\..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="LoadableBeanProviderTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ILoadableConfig.cs" />
+    <Compile Include="LoadableConfig.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\src\bean\Org.Brixen.Bean.csproj">
-      <Project>{C8D1B60B-D62D-4CBA-8B2F-63323829408A}</Project>
-      <Name>Org.Brixen.Bean</Name>
+    <ProjectReference Include="..\util\Org.Brixen.Util.csproj">
+      <Project>{F5587F7D-4A8F-4C15-87FE-8A2801FB4DB2}</Project>
+      <Name>Org.Brixen.Util</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

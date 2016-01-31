@@ -2,9 +2,10 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
 using Moq;
+using Org.Brixen.Bean;
 
-namespace Org.Brixen.Bean.Tests
-{
+namespace Org.Brixen.Tests.Bean {
+	
 	[TestFixture]
 	[Category("ClickControlBeanTestGroup")]
 	public class ClickControlBeanTest {
