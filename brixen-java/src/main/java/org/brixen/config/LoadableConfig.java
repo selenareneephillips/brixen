@@ -7,8 +7,7 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * Defines the contract for a configuration bean for a {@code Loadable} which is deserializable from JSON by
- * <b>Jackson</b>.
+ * Defines the contract for a configuration bean for a {@code Loadable} which is deserializable from JSON.
  * <p>
  * {@code LoadableConfig} supports dynamic configuration of the load timeout for a {@code Loadable} based on
  * environmental factors such as browser, browser version, OS and OS version. Additionally, {@code LoadableConfig}
@@ -16,11 +15,10 @@ import java.util.Optional;
  */
 //This annotation and its data specify how Jackson is to identify the actual type of the configuration bean it needs to
 //populate when it is deserializing configuration data for a Loadable, or one of its sub-types. Configuration beans are
-//polymorphic, which is to say that configuration beans for page objects that are more specialized than a Loadable
-//extend LoadableConfigImpl. In order for Jackson to property deserialize these more specialized configuration beans,
-//there needs to be some data attached to the configuration source to identify the type of configuration it represents.
-//This annotation indicates that the class name of the bean will be present in the configuration source and that it
-//will be included in the resulting POJO as a property named 'type' which is visible and accessible on the POJO.
+//polymorphic. In order for Jackson to property deserialize configuration beans to their proper types, there needs to
+//be some data attached to the configuration source to identify the type of configuration it represents. This
+//annotation indicates that the class name of the bean will be present in the configuration source and that it will be
+// included in the resulting POJO as a property named 'type' which is visible and accessible on the POJO.
 @JsonTypeInfo(
         use = JsonTypeInfo.Id.CLASS,
         include = JsonTypeInfo.As.PROPERTY,

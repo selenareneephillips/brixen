@@ -7,7 +7,7 @@ namespace Org.Brixen.Bean {
 
 	public class ControllableBean : ContentContainerBean, IControllableBean {
 
-		private Dictionary<string,IControlBean> controlBeans = new Dictionary<string,IControlBean>();
+		private IDictionary<string,IControlBean> controlBeans = new Dictionary<string,IControlBean>();
 
 		public void AddClickControl(string name) {
 			if(name == null) {
@@ -322,7 +322,7 @@ namespace Org.Brixen.Bean {
 			}
 		}
 
-		public Dictionary<String,IControlBean> ControlBeans { 
+		public IDictionary<String,IControlBean> ControlBeans { 
 			get {
 				return controlBeans;
 			}

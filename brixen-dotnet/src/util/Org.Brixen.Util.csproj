@@ -32,9 +32,6 @@
     <Reference Include="Squire.Essentials">
       <HintPath>..\..\packages\squire.essentials.0.2.3\lib\net40\Squire.Essentials.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>..\..\packages\CommonServiceLocator.1.2\lib\portable-windows8+net40+sl5+windowsphone8\Microsoft.Practices.ServiceLocation.dll</HintPath>
-    </Reference>
     <Reference Include="Squire.Decoupled">
       <HintPath>..\..\packages\squire.decoupled.0.2.3\lib\net40\Squire.Decoupled.dll</HintPath>
     </Reference>
@@ -44,12 +41,16 @@
     <Reference Include="Squire.Json">
       <HintPath>..\..\packages\squire.json.0.1.0\lib\net40\Squire.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Optional.cs" />
     <Compile Include="OptionalJsonContractResolver.cs" />
     <Compile Include="OptionalJsonConverter.cs" />
+    <Compile Include="DictionaryExtensions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

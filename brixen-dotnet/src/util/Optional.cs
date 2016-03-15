@@ -123,13 +123,13 @@ namespace Org.Brixen.Util {
 		public override int GetHashCode() {
 			if (!isSet) return -1;
 			if (!hasValue) return 0;
-			return optional.GetHashCode();
+			return (13 * 397) 
+				^ optional.GetHashCode();
 		}
 			
 		public override string ToString() {
-			return isSet ?
-				(hasValue ? optional.ToString() : "null") :
-				"undefined";
+			return String.Format("Optional(Value: {0}", (isSet ? (hasValue ? optional.ToString() : "null") : 
+				"undefined") + ")");
 		}
 	}
 }
