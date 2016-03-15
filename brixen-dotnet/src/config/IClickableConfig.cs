@@ -1,14 +1,14 @@
-﻿using System;
-using Org.Brixen.Util;
+﻿using Org.Brixen.Util;
 
-namespace Org.Brixen.Config {
+namespace Org.Brixen.Config
+{
 
 	/// <summary>
-	/// Defines the contract for a configuration bean for a <see cref="Org.Brixen.PageObject.Clickable">Clickable></see> 
-	/// which is deserializable from JSON by <b>Jackson</b>.
+	/// Defines the contract for a configuration bean for a <see cref="Org.Brixen.PageObject.IClickable"/> which is 
+	/// deserializable from JSON by <b>Jackson</b>.
 	/// <p>
-	/// <c>ClickableConfig</c> supports dynamic configuration of the Javascript click work around flag for a
-	/// <c>ClickableConfig</c> based on environmental factors such as browser, browser version and OS.                                                                              
+	/// <c>IClickableConfig</c> supports dynamic configuration of the Javascript click work around flag for a
+	/// <c>IClickableConfig</c> based on environmental factors such as browser, browser version and OS.                                                                              
 	/// </summary>
 	public interface IClickableConfig : ILoadableConfig {
 

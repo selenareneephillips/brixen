@@ -1,8 +1,8 @@
-﻿using System;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using System.Collections.Generic;
 
-namespace Org.Brixen.Bean {
+namespace Org.Brixen.Bean
+{
 
 	/// <summary>
 	/// Defines the contract for a data transfer object used to construct a <b>Selenium</b> page object that models a
@@ -127,12 +127,10 @@ namespace Org.Brixen.Bean {
 		/// Enables or disables the Javascript hover workaround for the specified web control.
 		/// <para>
 		/// Enabling the Javascript hover workaround will invoke a mouseover action on the web control with Javascript
-		/// rather than using <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)">
-		/// Actions.MoveToElement(IWebElement)</see> method. This is useful in circumstances where the mouseover 
-		/// function fails silently, that is the 
-		/// <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)">
-		/// Actions.MoveToElement(IWebElement)</see> runs without throwing any <c>Exceptions</c>, but the element is 
-		/// not really moused over.
+		/// rather than using <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)"/> method. 
+		/// This is useful in circumstances where the mouseover function fails silently, that is the 
+		/// <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)"/> runs without throwing any 
+		/// <c>Exceptions</c>, but the element is not really moused over.
 		/// </para>
 		/// </summary>
 		/// <param name="name">The name of the web control.</param>
@@ -145,12 +143,10 @@ namespace Org.Brixen.Bean {
 		/// <para>
 		/// The unhover element is used to focus the mouse in a safe location away from the web control. Enabling the
 		/// Javascript hover workaround will invoke a mouse over action on the unhover element with Javascript rather 
-		/// than using <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)">
-		/// Actions.MoveToElement(IWebElement)</see> method. This is useful 
-		/// in circumstances where the mouse over function fails silently, that is the 
-		/// <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)">
-		/// Actions.MoveToElement(IWebElement)</see> runs without throwing any <c>Exceptions</c>, but the element is 
-		/// not really moused over.
+		/// than using <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)"/> method. This is 
+		/// useful in circumstances where the mouse over function fails silently, that is the 
+		/// <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)"/> runs without throwing any 
+		/// <c>Exceptions</c>, but the element is not really moused over.
 		/// </para>
 		/// </summary>
 		/// <param name="name">The name of the web control.</param>
@@ -161,11 +157,10 @@ namespace Org.Brixen.Bean {
 		/// <summary>
 		/// Enables or disables the Javascript click workaround for the specified web control.
 		/// <para>
-		/// Enabling the Javascript click workaround will invoke a 'click' on the web control with Javascript
-		/// rather than using <see cref="OpenQA.Selenium.IWebElement.Click()">IWebElement.Click()</see> method. This is 
-		/// useful in circumstances where clicks fail silently, that is 
-		/// <see cref="OpenQA.Selenium.IWebElement.Click()">IWebElement.Click()</see> runs without throwing any 
-		/// <c>Exceptions</c>, but the element is not really clicked.
+		/// Enabling the Javascript click workaround will invoke a 'click' on the web control with Javascript rather 
+		/// than using <see cref="IWebElement.Click()"/> method. This is useful in circumstances where clicks fail 
+		/// silently, that is <see cref="IWebElement.Click()"/> runs without throwing any <c>Exceptions</c>, but the 
+		/// element is not really clicked.
 		/// </para>
 		/// </summary>
 		/// <param name="name">The name of the web control.</param>
@@ -174,57 +169,49 @@ namespace Org.Brixen.Bean {
 		void SetClickControlWithJavascript(string name, bool clickWithJavascript);
 
 		/// <summary>
-		/// Enables or disables the <see cref="OpenQA.Selenium.IWebElement.Click()">IWebElement.Click()</see> action 
-		/// workaround for forcing the mouse to focus on the specified web control.
+		/// Enables or disables the <see cref="IWebElement.Click()"/> action workaround for forcing the 
+		/// mouse to focus on the specified web control.
 		/// <para>
 		/// Note: It is best to use this in situations where both the 
-		/// <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)">
-		/// Actions.MoveToElement(IWebElement)</see> method and the Javascript hover 
-		/// workaround fail silently, that is 
-		/// <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)">
-		/// Actions.MoveToElement(IWebElement)</see> 
-		/// and the Javascript hover workaround run without throwing any <c>Exceptions</c>, but the element is not 
-		/// really moused over. This will allow automation of test cases which are dependent on the side effects 
-		/// generated by the hover action, but are not related to testing that the hover action alone triggers the 
-		/// desired side effects. In such cases, it would be prudent to manually test the hover action alone in the 
-		/// environment(s) where neither the 
-		/// <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)">
-		/// Actions.MoveToElement(IWebElement)</see> nor the Javascript hover workaround trigger the mouseover event 
-		/// and the expected side effect(s).
+		/// <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)"/> method and the Javascript 
+		/// hover workaround fail silently, that is 
+		/// <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)"/> and the Javascript hover 
+		/// workaround run without throwing any <c>Exceptions</c>, but the element is not really moused over. This will 
+		/// allow automation of test cases which are dependent on the side effects generated by the hover action, but 
+		/// are not related to testing that the hover action alone triggers the desired side effects. In such cases, it 
+		/// would be prudent to manually test the hover action alone in the environment(s) where neither the 
+		/// <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)"/> nor the Javascript hover 
+		/// workaround trigger the mouseover event and the expected side effect(s).
 		/// </para>
 		/// </summary>
 		/// <param name="name">The name of the web control.</param>
-		/// <param name="clickInsteadOfHover">If <c>true</c>, enables the 
-		/// <see cref="OpenQA.Selenium.IWebElement.Click()">IWebElement.Click()</see> action workaround; if 
-		/// <c>false</c>, disables it.</param>
+		/// <param name="clickInsteadOfHover">If <c>true</c>, enables the <see cref="IWebElement.Click()"/> action 
+		/// workaround; if <c>false</c>, disables it.</param>
 		void SetClickControlInsteadOfHover(string name, bool clickInsteadOfHover);
 
 		/// <summary>
 		/// Enables or disables the Javascript click action workaround for the specified web control.
 		/// <para>
 		/// Note: It is best to use this in situations where the 
-		/// <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)"> 
-		/// Actions.MoveToElement(IWebElement)</see> method, the Javascript hover
-		/// workaround and the <see cref="OpenQA.Selenium.IWebElement.Click()">IWebElement.Click()</see> method all 
-		/// fail silently, that is they all run without throwing any <c>Exceptions</c>, but the element is not really 
-		/// moused over or clicked.
+		/// <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)"/> method, the Javascript hover
+		/// workaround and the <see cref="IWebElement.Click()"/> method all fail silently, that is they all run without 
+		/// throwing any <c>Exceptions</c>, but the element is not really moused over or clicked.
 		/// </para>
-		/// For an <see cref="IHoverControl">IHoverControl</see>, this will allow automation of test cases which are 
+		/// For an <see cref="Org.Brixen.PageObject.IHoverControl"/>, this will allow automation of test cases which are 
 		/// dependent on the side effects generated by the hover action, but are not related to testing that the hover 
 		/// action alone triggers the desired side effects. In such cases, it would be prudent to manually test the 
 		/// hover action alone in the environment(s) where neither the 
-		/// <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)">
-		/// Actions.MoveToElement(IWebElement)</see> nor the Javascript hover workaround trigger the mouseover event 
-		/// and the expected side effect(s).
+		/// <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)"/> nor the Javascript hover 
+		/// workaround trigger the mouseover event and the expected side effect(s).
 		/// <para>
-		/// For an <see cref="IHoverAndClickControl"/>, this will help in situations where a hover cannot be executed 
-		/// to make the control visible because usually, a Javascript click will successfully click an element that is 
-		/// not visible, and this will allow automation of test cases which are dependent on the side effects generated 
-		/// by the click action, but are not related to testing that the hover action makes the web control visible. In 
-		/// such cases, it would be prudent to manually test the hover action alone in the environment(s) where neither 
-		/// the <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)">
-		/// Actions.MoveToElement(IWebElement)</see> nor the Javascript hover workaround trigger the mouseover event 
-		/// that makes the control visible.
+		/// For an <see cref="Org.Brixen.PageObject.IHoverAndClickControl"/>, this will help in situations where a 
+		/// hover cannot be executed to make the control visible because usually, a Javascript click will successfully 
+		/// click an element that is not visible, and this will allow automation of test cases which are dependent on 
+		/// the side effects generated by the click action, but are not related to testing that the hover action makes 
+		/// the web control visible. In such cases, it would be prudent to manually test the hover action alone in the 
+		/// environment(s) where neither the 
+		/// <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)"/> nor the Javascript hover 
+		/// workaround trigger the mouseover event that makes the control visible.
 		/// </para>
 		/// </summary>
 		/// <param name="name">The name of the web control.</param>
@@ -233,25 +220,21 @@ namespace Org.Brixen.Bean {
 		void SetClickControlWithJavascriptInsteadOfHover(string name, bool clickWithJavascriptInsteadOfHover);
 
 		/// <summary>
-		/// Enables or disables the <see cref="OpenQA.Selenium.IWebElement.Click()">IWebElement.Click()</see> action 
-		/// workaround for the unhover element which is used to focus the mouse in a safe location away from the 
-		/// specified web control.
+		/// Enables or disables the <see cref="IWebElement.Click()"/> action workaround for the unhover element which 
+		/// is used to focus the mouse in a safe location away from the specified web control.
 		/// <para>
 		/// Care should be taken to ensure that clicking on the unhover element does not trigger undesired side effects 
 		/// and serves only to force the mouse away from the web control. This action is riskier than hovering the 
 		/// mouse over the unhover element, so it should be used in situations where the 
-		/// <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)">
-		/// Actions.MoveToElement(IWebElement)</see> method and the Javascript hover 
-		/// workaround fail silently, that is 
-		/// <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)">
-		/// Actions.MoveToElement(IWebElement)</see> and the Javascript hover workaround run without throwing any 
-		/// <c>Exceptions</c>, but the element is not really moused over.
+		/// <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)"/> method and the Javascript 
+		/// hover workaround fail silently, that is 
+		/// <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)"/> and the Javascript hover 
+		/// workaround run without throwing any <c>Exceptions</c>, but the element is not really moused over.
 		/// </para>
 		/// </summary>
 		/// <param name="name">The name of the web control.</param>
-		/// <param name="unhoverWithClickInstead">If <c>true</c>, enables the 
-		/// <see cref="OpenQA.Selenium.IWebElement.Click()">IWebElement.Click()</see> action workaround for the unhover 
-		/// element; if <c>false</c>, disables it.</param>
+		/// <param name="unhoverWithClickInstead">If <c>true</c>, enables the <see cref="IWebElement.Click()"/> action 
+		/// workaround for the unhover element; if <c>false</c>, disables it.</param>
 		void SetUnhoverControlWithClickInstead(string name, bool unhoverWithClickInstead);
 
 		/// <summary>
@@ -261,11 +244,9 @@ namespace Org.Brixen.Bean {
 		/// Care should be taken to ensure that clicking on the unhover element does not trigger undesired side effects 
 		/// and serves only to force the mouse away from the web control. This action is riskier than hovering the 
 		/// mouse over the unhover element, so it should be used in situations where the 
-		/// <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)">
-		/// Actions.MoveToElement(IWebElement)</see> method, the Javascript hover 
-		/// workaround and the <see cref="OpenQA.Selenium.IWebElement.Click()">IWebElement.Click()</see> method fail 
-		/// silently, that is they run without throwing any <c>Exceptions</c>, but the element is not really moused 
-		/// over or clicked.
+		/// <see cref="OpenQA.Selenium.Interactions.Actions.MoveToElement(IWebElement)"/> method, the Javascript hover 
+		/// workaround and the <see cref="IWebElement.Click()"/> method fail silently, that is they run without 
+		/// throwing any <c>Exceptions</c>, but the element is not really moused over or clicked.
 		/// </para>
 		/// </summary>
 		/// <param name="name">The name of the web control.</param>
@@ -279,7 +260,7 @@ namespace Org.Brixen.Bean {
 		/// </summary>
 		/// <returns>The collection of <c>IControlBeans</c> that specify the web controls for the page object as a 
 		/// <c>Dictionary</c> where the names of the web controls are the keys.</returns>
-		IDictionary<String,IControlBean> ControlBeans { 
+		IDictionary<string,IControlBean> ControlBeans { 
 			get; 
 		}
 	}

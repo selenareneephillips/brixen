@@ -23,7 +23,7 @@ namespace Org.Brixen.Bean {
 		/// Gets or sets the Javascript click workaround for the options in the menu.
 		/// <para>
 		/// If enabled, Javascript will be used to execute a click on the on the menu options. If not, the
-		/// <see cref="OpenQA.Selenium.IWebElement.Click()"/> method will be used.
+		/// <see cref="IWebElement.Click()"/> method will be used.
 		/// </para>
 		/// </summary>
 		/// <value>If <c>true</c>, the Javascript click workaround is enabled; <c>false</c> otherwise.</value>
